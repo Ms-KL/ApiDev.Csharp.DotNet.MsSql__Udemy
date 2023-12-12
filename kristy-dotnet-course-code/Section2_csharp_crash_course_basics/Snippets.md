@@ -9,22 +9,16 @@
 * [VS Code Shortcuts](#vs-code-shortcuts)
 * [Console Template (old)](#console-template-old)
 * [Console Template (new)](#console-template-new)
-<br>
-<br>
-**VARIABLES:**
-<br>
 
+    **VARIABLES:**
 * [Bytes, Bits, Int, Short, Long](#bytes-bits-int-short-long)
 * [Floating Point Numbers](#floating-point-numbers)
 * [String](#string)
 * [Boolean](#boolean)
 * [Static versus Dynamic Variables](#static-versus-dynamic-variables)
 * [Check type of variable](#check-type-of-variable)
-<br>
-<br>
-**DATA STRUCTURES:**
-<br>
 
+    **DATA STRUCTURES:**
 * [Arrays](#)
 
 <br>
