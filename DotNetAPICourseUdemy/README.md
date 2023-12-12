@@ -12,17 +12,12 @@ Note: This is Cloned Course Content
 ## Outcomes:
 ***To understand...***
 
-* ✅ Core concepts of software development in `C#` that extend beyond any one language
-
-* ✅ How to read and write code that runs powerful software tools and `REST APIs` with `C#` and `.NET Core`
-
-* ✅ How to read and write `SQL Queries` with `T SQL` for `MS SQL Server` and `Azure SQL`
-
-* ✅ How to use powerful cross-platform tools for writing code (`VS Code`), querying databases (`Azure Data Studio`), and testing `REST APIS` (`Postman`)
-
-* ✅ How to provision `Azure` resources for production `C# .NET Core 7` Applications and `Azure SQL Databases`
-
-* ✅ How to use `.NET Core` to build powerful `Data Driven applications` and `APIs`
+* Core concepts of software development in `C#` that extend beyond any one language
+* How to read and write code that runs powerful software tools and `REST APIs` with `C#` and `.NET Core`
+* How to read and write `SQL Queries` with `T SQL` for `MS SQL Server` and `Azure SQL`
+* How to use powerful cross-platform tools for writing code (`VS Code`), querying databases (`Azure Data Studio`), and testing `REST APIS` (`Postman`)
+* How to provision `Azure` resources for production `C# .NET Core 7 & 8` Applications and `Azure SQL Databases`
+* How to use `.NET Core` to build powerful `Data Driven applications` and `APIs`
 
 ## Course Sections:
 
