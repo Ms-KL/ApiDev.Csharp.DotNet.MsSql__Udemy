@@ -6,10 +6,13 @@
 * [Command Line Control](#command-line-controls)
 * [Creating a Console App](#creating-a-console-app)
 * [Nuget Package Source](#nuget-package-source)
+* [VS Code Shortcuts](#vs-code-shortcuts)
 * [Console Template (old)](#console-template-old)
 * [Console Template (new)](#console-template-new)
 * [Bytes, Bits, Int, Short, Long](#bytes-bits-int-short-long)
 * [Floating Point Numbers](#floating-point-numbers)
+* [String](#string)
+* [Boolean](#boolean)
 
 <br>
 
@@ -279,3 +282,68 @@ Result:
 
 ---
 ### **String**
+
+* `string` vs `char`
+
+    ```csharp
+
+        string myString = "Hello World";
+        Console.WriteLine(myString);
+
+        char myChar = 'H';
+        Console.WriteLine(myChar);
+
+        char myChar2 = "H";
+        Console.WriteLine(myChar2); // ERROR: can't use  ""
+
+        char myChar3 = 'He';
+        Console.WriteLine(myChar3); // ERROR: > 1 character
+
+    ```
+
+---
+### **Boolean**
+
+* `bool` vs `System.Boolean`
+
+    ```csharp
+
+        bool myBool = true;
+        Console.WriteLine(myBool);
+
+        bool myBool2 = True; // ERROR: must be lowercase
+        Console.WriteLine(myBool2);
+
+        // same as:
+        System.Boolean myBool3 = true;
+        // bool = alias of System.Boolean
+        Console.WriteLine(myBool3);
+
+    ```
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **Static versus Dynamic Variables**
+* C# is a `statically` typed language
+    * variable type is `immutable`
+* versus Python `dynamically` typed
+    * variable type is `mutable`
+
+---
+### **Check type of variable**
+* `GetType()`:
+    ```csharp
+        
+        bool myBoolean = true;
+        Console.WriteLine(myBoolean.GetType());
+        // check variable type
+
+    ```
+
+    Result:
+            
+            System.Boolean
+
+---
