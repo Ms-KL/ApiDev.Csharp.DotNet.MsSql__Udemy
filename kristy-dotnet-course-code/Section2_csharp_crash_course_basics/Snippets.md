@@ -6,6 +6,8 @@
 * [Command Line Control](#command-line-controls)
 * [Creating a Console App](#creating-a-console-app)
 * [Nuget Package Source](#nuget-package-source)
+* [Console Template (old)](#console-template-old)
+* [Console Template (new)](#console-template-new)
 
 <br>
 
@@ -26,6 +28,11 @@
 | <insert> | `dotnet build`|
 | <insert> | `dotnet run`|
 
+<br>
+
+*Back to [contents](#contents)*
+
+---
 
 ### **Creating a Console App**
 * `cd <ROOT_DIRECTORY>`
@@ -39,6 +46,12 @@
 * `ls`
 * `dotnet run`
 
+<br>
+
+*Back to [contents](#contents)*
+
+---
+
 ### **Nuget Package Source**
 
 | Item | Command | Notes | 
@@ -46,6 +59,7 @@
 | Check Nuget Source | `dotnet nuget list source`| Note: See [Error Log](../ErrorResolution.md) for known Nuget issues |
 | Add Nuget Source | `dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org`| If required. Alt: manually change in Visual Studio - Nuget Package Manager|
 
+---
 
 ### **VS Code Shortcuts**
 
@@ -53,6 +67,69 @@
 |-|-|-|
 | Search for Error | `F8`| Ensure only related directory is open in VSC (same with debugging) |
 
-### **<insert>**
+---
+
+### **Console Template (Old)**
+
+```csharp
+
+using System;
+
+namespace HelloWorld
+{
+    internal class Program
+    {
+        // method: something a class can do
+        // Main runs by default
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
+
+```
+
+<br>
+
+*Back to [contents](#contents)*
+
+---
+
+### **Console Template (New)**
+
+Iterating against `args` from above structure
+
+```csharp
+Console.WriteLine(args[0]);
+// note: [0] first element of string in old structure
+```
+
+Terminal: 
+* passing in argument to print to console
+* will print: **thisistheargumentthatwillprint**
+
+```shell
+dotnet run thisistheargumentthatwillprint
+```
+
+Or ignore `args`
+
+```csharp
+// structure is implicit and hidden.
+Console.WriteLine("Hello World!");
+```
+
+Terminal:
+* will print: **Hello World!**
+```shell
+dotnet run
+```
+
+<br>
+
+*Back to [contents](#contents)*
+
+---
 
 ### **<insert>**
