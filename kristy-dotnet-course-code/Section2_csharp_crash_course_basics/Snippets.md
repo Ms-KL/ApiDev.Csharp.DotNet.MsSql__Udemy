@@ -9,10 +9,23 @@
 * [VS Code Shortcuts](#vs-code-shortcuts)
 * [Console Template (old)](#console-template-old)
 * [Console Template (new)](#console-template-new)
+<br>
+<br>
+**VARIABLES:**
+<br>
+
 * [Bytes, Bits, Int, Short, Long](#bytes-bits-int-short-long)
 * [Floating Point Numbers](#floating-point-numbers)
 * [String](#string)
 * [Boolean](#boolean)
+* [Static versus Dynamic Variables](#static-versus-dynamic-variables)
+* [Check type of variable](#check-type-of-variable)
+<br>
+<br>
+**DATA STRUCTURES:**
+<br>
+
+* [Arrays](#)
 
 <br>
 
@@ -346,4 +359,54 @@ Result:
             
             System.Boolean
 
+
 ---
+### **Arrays**
+
+* array -> immutable length
+* list -> dynamic length
+* array of strings
+
+    ```csharp
+        // array of strings
+        string[] myGroceryArray = new string[2];
+            
+        // type structure variable = create string array with length of 2 
+        // Length = Bounds of array
+
+        myGroceryArray[0] = "Guacamole";
+
+        Console.WriteLine(myGroceryArray[0]); // Guacamole
+        Console.WriteLine(myGroceryArray[1]); // <blank>
+        Console.WriteLine(myGroceryArray[2]); // ERROR: Outside bounds of array
+
+    ```
+
+    Result:
+
+        Guacamole
+
+        Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.
+
+* change the values within the array:
+
+    ```csharp
+        // array of strings
+        string[] myGroceryArray = new string[2];
+            
+        // type structure variable = create string array with length of 2 
+        // Length = Bounds of array
+
+        myGroceryArray[0] = "Guacamole";
+        myGroceryArray[1] = "Ice Cream";
+        myGroceryArray[0] = "Guacamole NEW";          
+
+        Console.WriteLine(myGroceryArray[0]);
+        Console.WriteLine(myGroceryArray[1]); 
+
+    ```
+
+    Result:
+
+        Guacamole NEW
+        Ice Cream
