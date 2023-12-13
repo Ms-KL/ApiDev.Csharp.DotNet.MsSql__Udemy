@@ -203,10 +203,34 @@ namespace HelloWorld
             // mySecondGroceryArray[2] = "";
             // ERROR: Outside bounds of array length of 2
 
+            Console.WriteLine(mySecondGroceryArray);
             Console.WriteLine(mySecondGroceryArray[0]);
             Console.WriteLine(mySecondGroceryArray[1]);
             // Console.WriteLine(mySecondGroceryArray[2]);
             // ERROR: Outside bounds of array length of 2
+
+             
+            // ----------------------
+            // LISTS
+            // ----------------------
+
+            // don't need to specify length or pass in values
+
+            List<string> myGroceryList = new List<string>();
+
+            Console.WriteLine(myGroceryList);
+            // Console.WriteLine(myGroceryList[0]); // ERROR: outside of bounds
+
+            List<string> mySecondGroceryList = new List<string>() {"milk", "cheese"};
+
+            Console.WriteLine(mySecondGroceryList);
+            Console.WriteLine(mySecondGroceryList[0]);
+            Console.WriteLine(mySecondGroceryList[1]);
+
+            // add item to list using Add() method in List class
+            mySecondGroceryList.Add("oranges");
+
+            Console.WriteLine(mySecondGroceryList[2]);
 
 
 

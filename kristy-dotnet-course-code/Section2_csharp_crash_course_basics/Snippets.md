@@ -332,8 +332,7 @@ Result:
 ### **Arrays**
 
 * array -> immutable length
-* list -> dynamic length
-* array of strings
+* array of strings = `string[] <myArrayName> = new string[<length>]`
 
     ```csharp
         // array of strings
@@ -389,6 +388,7 @@ Result:
         myGroceryArray[1] = "Ice Cream";
         myGroceryArray[0] = "Guacamole NEW";          
 
+        Console.WriteLine(myGroceryArray);
         Console.WriteLine(myGroceryArray[0]);
         Console.WriteLine(myGroceryArray[1]); 
         Console.WriteLine(myGroceryArray[2]); 
@@ -405,12 +405,72 @@ Result:
         // ERROR: Outside bounds of array
 
     ```  
-        Result:
+    Result:
 
+        System.String[]
         Guacamole NEW
         Ice Cream    
         Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.
 
         Apples
         Eggs
-        Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.      
+        Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.    
+
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **Lists**
+
+* list -> dynamic length
+* list is the class
+* eg: `List<type> myGroceryList = new List<type>();`
+    * `List<string> myGroceryList = new List<string>();`
+    * list of strings, with length of 0
+* don't need to provide a size or pass in values
+
+* Create an empty List of Strings
+
+    ```csharp
+
+        // List is a class
+        // Contains methods like .Add()
+
+        // Initialise a list of strings 
+        List<string> myGroceryList = new List<string>();
+
+        Console.WriteLine(myGroceryList);
+        Console.WriteLine(myGroceryList[0]); 
+        // ERROR: Index was out of range.
+
+    ```
+
+    Result:
+
+        System.Collections.Generic.List`1[System.String]
+        Unhandled exception. System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+
+* Add items to the List using Add()
+
+    ```csharp
+
+        List<string> mySecondGroceryList = new List<string>() {"milk", "cheese"};
+
+        Console.WriteLine(mySecondGroceryList);
+        Console.WriteLine(mySecondGroceryList[0]);
+        Console.WriteLine(mySecondGroceryList[1]);
+
+        // add item to list using Add() method in List class
+        mySecondGroceryList.Add("oranges");
+        Console.WriteLine(mySecondGroceryList[2]);
+
+    ```
+
+    Result:
+
+        System.Collections.Generic.List`1[System.String]
+        milk
+        cheese
+        oranges
+
