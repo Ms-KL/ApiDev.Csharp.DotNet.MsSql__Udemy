@@ -32,13 +32,14 @@
 | Make New Directory | `mkdir <NewDirectoryName>` |
 | Create new template | `dotnet new <TemplateType>` | console, webapi, gitignore |
 | Name: <br> App, NameSpace, Directory | `-n <App Name>` <br> `--name <App Name>` |
+| Create new console app with name | `dotnet new console -n ProjectName` | 
 | Specify Output Directory: | `-o <Output Directory>` <br> `--output <Output Directory>` | |
 | Specify Language | `-lang "<Language>"` <br>`--language "<language>"` | Visual Basic, C#, F# |
 | Open Current Working Directory in VS Code | `code .` |
-| <insert> | `ls` <br> `dir` |
-| <insert> | `cd <directory>`  |
-| <insert> | `dotnet build`|
-| <insert> | `dotnet run`|
+| Print directory contents | `ls` <br> `dir` |
+| Change directory | `cd <directory>`  |
+| Build project | `dotnet build`| 
+| Run project | `dotnet run`|
 
 <br>
 
@@ -47,16 +48,21 @@
 ---
 
 ### **Creating a Console App**
-* `cd <ROOT_DIRECTORY>`
-* `mkdir kristy-dotnet-course-code`
-* `cd kristy-dotnet-course-code`
-* `dotnet new -n HelloWorld`
-    * ! Error -> No templates or subcommands found matching: '-n'.
-* `dotnet new console -n HelloWorld`
-* `ls`
-* `cd HelloWorld`
-* `ls`
-* `dotnet run`
+
+```shell
+    cd <ROOT_DIRECTORY>
+    mkdir kristy-dotnet-course-code
+
+    dotnet new -n HelloWorld
+    # ! Error -> No templates or subcommands found matching: '-n'.
+
+    dotnet new console -n HelloWorld
+    ls # check to see if HelloWorld was created
+    cd HelloWorld
+    
+    dotnet build
+    dotnet run
+```
 
 <br>
 
@@ -69,7 +75,7 @@
 | Item | Command | Notes | 
 |-|-|-|
 | Check Nuget Source | `dotnet nuget list source`| Note: See [Error Log](../ErrorResolution.md) for known Nuget issues |
-| Add Nuget Source | `dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org`| If required. Alt: manually change in Visual Studio - Nuget Package Manager|
+| Add Nuget Source | `dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org`| If required. <br>Alt: manually change in Visual Studio - Nuget Package Manager|
 
 ---
 
@@ -145,102 +151,70 @@ dotnet run
 ---
 
 ### **Bytes, Bits, Int, Short, Long**
+
 * 1 Byte = 8 Bits = `00000000`
 * 1 Bit `0` = `0` or `1` (binary)
 * `unsigned` = can't be negative
 * `signed` = can be negative
-* From the right start with a value of `1` and double for each digit to the left
 
-        0000000[0] = 0
-        0000000[1] = 1
-        000000[1]0 = 2
+<br>
 
-* `byte` vs `sbyte`
-    ```csharp
+| **type** | `byte` | `sbyte` | `ushort` | `myshort` | `int` | `long` |
+| - | - | - | - | - | - | - |
+| **pos/neg** | unsigned | signed | unsigned | signed | signed | signed |
+| **size** | 1 byte (8 bit) | 1 byte (8 bit) |  2 byte (16 bit) | 2 byte (16 bit) | 4 byte (32 bit) | 4 byte (32 bit) | 4 byte (32 bit) |
+| **min** | 0 | -128 | 0 | -32768 | -2147483648 | -9223372036854775808 |
+| **max** | 255 | 127 | 65535 | 32767 | 2147483647 | ? |
+| **binary** | 00000000 | 00000000 | 00000000 <br> 00000000 | 00000000 <br> 00000000 | 00000000 00000000 <br> 00000000 00000000 | 00000000 00000000 <br> 00000000 00000000 |
 
-        // 1 byte (8 bit) unsigned, negative
-        byte myByte = 255;  
-        byte mySecondByte = 0; 
+<br>
 
-        // 1 byte (8 bit) signed, positive
-        sbyte mySbyte = 127;  
-        sbyte mySecondSbyte = -128; 
+Allocating `byte`: From the right start with a value of `1` and double for each digit to the left:
 
-    ```
+        0000000[0]      = 0
+        0000000[1]      = 1
+        000000[1]0      = 2
+        000000[11]      = 3
+        00000[1]00      = 4
+        00000[1]0[1]    = 5
+        00000[11]0      = 6      
+        00000[111]      = 7      
+        0000[1]000      = 8   
+        0000[1]00[1]    = 9
+        0000[1]0[1]0    = 10
+        0000[1]00[1]    = 11   
+        000[1]0000      = 16          
+        00[1]00000      = 32         
+        0[1]000000      = 64                            
+        [1]0000000      = 128        
+        [11111111]      = 255            
 
-    * `byte`= 1 byte / 8 bit = unsigned
+Allocating variables based on size requirements:
 
-            00000000 = 0 (min value unsigned)
-            00000001 = 1
-            00000010 = 2
-            00000011 = 3
-            00000100 = 4
-            00000101 = 5
-            00000110 = 6
-            00000111 = 7
-            00001000 = 8
-            00010000 = 16     
-            00100000 = 32  
-            01000000 = 64                      
-            10000000 = 128
-            11111111 = 255 (max value unsigned)
-            
-    * `sbyte` = 1 byte / 8 bit = signed
+```csharp
 
-            00000000 = -128 (min value signed)
-            11111111 = 127 (max value signed)
+    // 1 byte (8 bit) unsigned, negative
+    byte myByte = 255;  
+    byte mySecondByte = 0; 
 
-* `ushort` vs `myshort`
-    ```csharp
+    // 1 byte (8 bit) signed, positive
+    sbyte mySbyte = 127;  
+    sbyte mySecondSbyte = -128; 
 
-        // 2 byte (16 bit) unsigned, negative
-        ushort myUshort = 65535;
+    // 2 byte (16 bit) unsigned, negative
+    ushort myUshort = 65535;
 
-        // 2 byte (16 bit) signed, positive
-        short myShort = -32768;
+    // 2 byte (16 bit) signed, positive
+    short myShort = -32768;
 
-    ```
+    // 4 byte (32 bit) signed, negative
+    int myInt = 2147483647;
+    int mySecondInt = -2147483648;
 
-    * `ushort` = 2 byte / 16 bit = unsigned
+    // 8 byte (64 bit) signed, negative
+    long myLong = -9223372036854775808;
 
-            0000000000000000 = 0
-            1111111111111111 = 65535
-
-    * `myshort` = 2 byte / 16 bit = signed
-
-            0000000000000000 = -32768
-            1111111111111111 = 32767
-
-* `int` vs `long`
-    ```csharp
-
-        // 4 byte (32 bit) signed, negative
-        int myInt = 2147483647;
-        int mySecondInt = -2147483648;
-
-        // 8 byte (64 bit) signed, negative
-        long myLong = -9223372036854775808;
-
-    ```
-
-    * `int` = 4 byte / 32 bit = signed
-
-            00000000000000000000000000000000 
-            = -2147483648
-
-            11111111111111111111111111111111 
-            = 2147483647
-
-    * `long` = 8 byte / 64 bit = signed
-
-            00000000000000000000000000000000
-            00000000000000000000000000000000 
-            = -9223372036854775808
-
-            11111111111111111111111111111111
-            11111111111111111111111111111111 
-            = 9223372036854775807
-
+```
 <br>
 
 *Back to [contents](#contents)*
@@ -404,3 +378,39 @@ Result:
 
         Guacamole NEW
         Ice Cream
+
+* ERROR: Outside the bounds of the array
+
+    ```csharp
+        // array of strings
+        string[] myGroceryArray = new string[2];
+
+        myGroceryArray[0] = "Guacamole";
+        myGroceryArray[1] = "Ice Cream";
+        myGroceryArray[0] = "Guacamole NEW";          
+
+        Console.WriteLine(myGroceryArray[0]);
+        Console.WriteLine(myGroceryArray[1]); 
+        Console.WriteLine(myGroceryArray[2]); 
+        // ERROR: Outside bounds of array 
+
+        string[] mySecondGroceryArray = {"Apples", "Eggs"};
+
+        mySecondGroceryArray[2] = "";
+        // ERROR: Outside bounds of array 
+
+        Console.WriteLine(mySecondGroceryArray[0]);
+        Console.WriteLine(mySecondGroceryArray[1]);
+        Console.WriteLine(mySecondGroceryArray[2]);
+        // ERROR: Outside bounds of array
+
+    ```  
+        Result:
+
+        Guacamole NEW
+        Ice Cream    
+        Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.
+
+        Apples
+        Eggs
+        Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.      

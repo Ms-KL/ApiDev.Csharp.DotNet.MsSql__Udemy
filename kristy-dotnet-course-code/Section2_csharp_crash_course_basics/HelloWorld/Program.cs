@@ -187,7 +187,7 @@ namespace HelloWorld
 
             // array of strings
             string[] myGroceryArray = new string[2];
-                // type structure variable = create string array with length of 2
+            // type structure variable = create string array with length of 2
 
             myGroceryArray[0] = "Guacamole";
             myGroceryArray[1] = "Ice Cream";
@@ -195,7 +195,20 @@ namespace HelloWorld
 
             Console.WriteLine(myGroceryArray[0]);
             Console.WriteLine(myGroceryArray[1]);
-            // Console.WriteLine(myGroceryArray[2]); // ERROR: Outside bounds of array length of 2
+            // Console.WriteLine(myGroceryArray[2]); 
+            // ERROR: Outside bounds of array length of 2
+
+            string[] mySecondGroceryArray = {"Apples", "Eggs"};
+
+            // mySecondGroceryArray[2] = "";
+            // ERROR: Outside bounds of array length of 2
+
+            Console.WriteLine(mySecondGroceryArray[0]);
+            Console.WriteLine(mySecondGroceryArray[1]);
+            // Console.WriteLine(mySecondGroceryArray[2]);
+            // ERROR: Outside bounds of array length of 2
+
+
 
         }
     }
