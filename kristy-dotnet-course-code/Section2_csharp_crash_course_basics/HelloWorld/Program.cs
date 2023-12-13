@@ -266,6 +266,43 @@ namespace HelloWorld
             Console.WriteLine(myTwoDimensionalArray[0,0]);
             Console.WriteLine(myTwoDimensionalArray[1,1]);
 
+            // ----------------------          
+            // Dictionary
+            // ----------------------
+
+            // key / value pairs
+            // must declare pairs of array (key/value)
+            Dictionary<string, string> myGroceryDictionary = new Dictionary<string, string>
+            {
+                {"Cheese", "Dairy"}
+            };
+
+            // use key to obtain value
+            Console.WriteLine(myGroceryDictionary["Cheese"]);
+
+            // map to an array of strings
+            Dictionary<string, string[]> my2DGroceryDictionary = new Dictionary<string, string[]>()
+            {
+                {"Dairy", new string[]{"Cheese", "Milk", "Yoghurt"}}
+            };
+
+            // use key & index to obtain value
+            Console.WriteLine(my2DGroceryDictionary["Dairy"][2]);
+
+            // EXERCISE:
+            // create a dictionary with string keys and decimal values called "itemPrices".
+            // Set the price for "cheese" to 5.99 and the price for  "carrots" to 2.99.
+
+            Dictionary<string,decimal> itemPrices = new Dictionary<string,decimal>
+            {
+                {"cheese", 5.99m},
+                {"carrots", 2.99m}
+            };
+
+            Console.WriteLine(itemPrices["cheese"].GetType());
+            Console.WriteLine(itemPrices["cheese"]);
+            Console.WriteLine(itemPrices["carrots"]);
+
         }
     }
 }

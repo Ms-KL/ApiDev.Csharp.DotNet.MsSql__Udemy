@@ -3,6 +3,9 @@
 ## Section 2: C# Crash Course - Basics
 
 ### Contents:
+
+
+**SETUP ENVIRONMENT:**
 * [Command Line Control](#command-line-controls)
 * [Creating a Console App](#creating-a-console-app)
 * [Nuget Package Source](#nuget-package-source)
@@ -10,7 +13,7 @@
 * [Console Template (old)](#console-template-old)
 * [Console Template (new)](#console-template-new)
 
-    **VARIABLES:**
+**VARIABLES:**
 * [Bytes, Bits, Int, Short, Long](#bytes-bits-int-short-long)
 * [Floating Point Numbers](#floating-point-numbers)
 * [String](#string)
@@ -18,8 +21,12 @@
 * [Static versus Dynamic Variables](#static-versus-dynamic-variables)
 * [Check type of variable](#check-type-of-variable)
 
-    **DATA STRUCTURES:**
-* [Arrays](#)
+**DATA STRUCTURES:**
+* [Arrays](#arrays)
+* [Lists](#lists)
+* [IEnumerable](#ienumerable)
+* [Multi-Dimensional Array](#multi-dimensional-array)
+* [Dictionaries](#dictionaries)
 
 <br>
 
@@ -558,3 +565,85 @@ Result:
 
         choc
         cake
+
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **Dictionaries**
+
+* key / value pairs
+* must declare pairs of array (key/value)
+
+    ```csharp
+        Dictionary<string, string> myGroceryDictionary = new Dictionary<string, string>
+        {
+            {"Cheese", "Dairy"}
+        };
+
+        // use key to obtain value
+        Console.WriteLine(myGroceryDictionary["Cheese"]);
+
+    ```
+    Result:
+
+        Dairy
+
+* map to an array of strings
+
+    ```csharp
+        Dictionary<string, string[]> my2DGroceryDictionary = new Dictionary<string, string[]>()
+        {
+            {"Dairy", new string[]{"Cheese", "Milk", "Yoghurt"}}
+        };
+
+        // use key & index to obtain value
+        Console.WriteLine(my2DGroceryDictionary["Dairy"][2]);
+
+    ```
+
+    Result:
+
+        Yoghurt
+
+* Exercise:
+    * create a dictionary with string keys and decimal values called "itemPrices".
+    * Set the price for "cheese" to 5.99 and the price for  "carrots" to 2.99.
+    * Solution:
+        ```csharp
+            Dictionary<string,decimal> itemPrices = new Dictionary<string,decimal>
+            {
+                {"cheese", 5.99m},
+                {"carrots", 2.99m}
+            };
+
+            Console.WriteLine(itemPrices["cheese"].GetType());
+            Console.WriteLine(itemPrices["cheese"]);
+            Console.WriteLine(itemPrices["carrots"]);
+        ```
+    * Result:
+
+            System.Decimal
+            5.99
+            2.99
+
+
+---------
+TEMPLATE:
+
+
+
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **TITLE**
+
+* thing
+* thing
+
+    ```csharp
+        <insert>
+    ```
