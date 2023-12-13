@@ -430,6 +430,37 @@ namespace HelloWorld
             // CONDITIONALS
             // ----------------------
 
+            int myIntNew = 5;
+            int mySecondInt = 10;
+
+            Console.WriteLine(myIntNew.Equals(mySecondInt)); // false
+            Console.WriteLine(myIntNew.Equals(mySecondInt/2)); // true
+
+            // equal to
+            Console.WriteLine(myIntNew == mySecondInt ); // false  
+            Console.WriteLine(myIntNew == mySecondInt / 2 ); // true  
+
+            // equal to
+            Console.WriteLine(myIntNew != mySecondInt ); // true  
+            Console.WriteLine(myIntNew != mySecondInt / 2 ); // false  
+
+            // greater than, less than, equal to
+            Console.WriteLine(myIntNew >= mySecondInt); // false          
+            Console.WriteLine(myIntNew >= mySecondInt / 2); // true
+            Console.WriteLine(myIntNew > mySecondInt); // false
+            Console.WriteLine(myIntNew > mySecondInt - 6); // true
+            Console.WriteLine(myIntNew <= mySecondInt); // true
+            Console.WriteLine(myIntNew < mySecondInt); // true  
+
+            // && = AND   
+            Console.WriteLine(5 < 10 && 5 > 10); // false
+            // check: 5 less than 10 AND 5 greater than 10
+
+            // || = OR   
+            Console.WriteLine(5 < 10 || 5 > 10); // true
+            // check: 5 less than 10 OR 5 greater than 10
+
+
         }
     }
 }
