@@ -474,3 +474,87 @@ Result:
         cheese
         oranges
 
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **IEnumerable**
+
+* use when needing to enumerate through an existing collection
+* `IEnumerable` = faster for looping
+* If we:
+    * want to look @ every element = `IEnumerable`
+    * want to access a single element & dynamically change it = `List`
+* Can't allocate elements to an `IEnumerable`
+    * must use existing `Array` or `List`
+
+<br>
+
+* Declare the ienumerable using existing List or Array
+
+    ```csharp
+
+        // Declare a list (or array) with elements
+        List<string> mySecondGroceryList = new List<string>() {"milk", "cheese"};
+
+        // Declare the ienumerable using List or Array
+        IEnumerable<string> myGroceryIEnumerable = mySecondGroceryList;
+
+        // Access the first value in myGroceryIEnumerable
+        Console.WriteLine(myGroceryIEnumerable.First());
+
+    ```
+
+    Result:
+        
+        milk
+
+
+* Access the index of the `myGroceryIEnumerable`
+
+
+    ```csharp
+
+        // Declare a list (or array) with elements
+        List<string> mySecondGroceryList = new List<string>() {"milk", "cheese"};
+
+        // Declare the ienumerable using List or Array
+        IEnumerable<string> myGroceryIEnumerable = mySecondGroceryList;
+
+        // can't access the index of the IEnumerable
+        Console.WriteLine(myGroceryIEnumerable[0]); 
+        // ERROR: cannot index
+
+    ```
+
+    Result:
+        
+        error CS0021: Cannot apply indexing with [] to an expression of type 'IEnumerable<string>'
+
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **Multi-Dimensional Array**
+
+* Create multi-dimensional array (and array of arrays)
+    ```csharp
+        // set values for 2d array when declaring
+        string[,] myTwoDimensionalArray = new string[,] 
+        {
+            { "choc", "banana" },
+            { "pie", "cake" }
+        };
+
+        // use double index 
+        // Reference 1st and 2nd dimensions in array
+        Console.WriteLine(myTwoDimensionalArray[0,0]);
+        Console.WriteLine(myTwoDimensionalArray[1,1]);
+    ```
+
+* Return:
+
+        choc
+        cake

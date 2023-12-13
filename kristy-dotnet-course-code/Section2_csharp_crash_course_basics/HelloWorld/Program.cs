@@ -208,7 +208,6 @@ namespace HelloWorld
             Console.WriteLine(mySecondGroceryArray[1]);
             // Console.WriteLine(mySecondGroceryArray[2]);
             // ERROR: Outside bounds of array length of 2
-
              
             // ----------------------
             // LISTS
@@ -229,10 +228,43 @@ namespace HelloWorld
 
             // add item to list using Add() method in List class
             mySecondGroceryList.Add("oranges");
-
             Console.WriteLine(mySecondGroceryList[2]);
 
+            // ----------------------
+            // IENUMERABLE
+            // ----------------------
 
+        	// we need to enumerate through the collection
+            // ienumerable is faster for looping
+            // If we:
+                // want to look @ every element = IEnumerable
+                // want to access a single element & dynamically change it = List
+
+
+            // Declare the ienumerable using existing List or Array
+                // can't allocate elements to ienumerable
+            IEnumerable<string> myGroceryIEnumerable = mySecondGroceryList;
+       
+            // Access the first value in myGroceryIEnumerable
+            Console.WriteLine(myGroceryIEnumerable.First());
+
+            // can't access the index of the IEnumerable (not indexable)
+            //Console.WriteLine(myGroceryIEnumerable[0]); // ERROR: cannot index
+            
+            // ----------------------          
+            // Multi-Dimensional ARRAY
+            // ----------------------
+
+            // set values for 2d array when declaring
+            string[,] myTwoDimensionalArray = new string[,] 
+            {
+                { "choc", "banana" },
+                { "pie", "cake" }
+            };
+
+            // use double index to reference 1st and 2nd dimensions in array
+            Console.WriteLine(myTwoDimensionalArray[0,0]);
+            Console.WriteLine(myTwoDimensionalArray[1,1]);
 
         }
     }
