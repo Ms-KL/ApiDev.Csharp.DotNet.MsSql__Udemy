@@ -167,6 +167,151 @@ _______________________________________________________*/
     Data Structures
 _______________________________________________________*/
 
+// using System;
+
+// namespace HelloWorld
+// {
+//     internal class Program
+//     {
+//         // method: something a class can do
+//         // Main runs by default
+//         static void Main(string[] args)
+//         {
+ 
+//             // ----------------------
+//             // ARRAYS
+//             // ----------------------
+
+//             // array -> immutable length
+//             // list -> dynamic length
+
+//             // array of strings
+//             string[] myGroceryArray = new string[2];
+//             // type structure variable = create string array with length of 2
+
+//             myGroceryArray[0] = "Guacamole";
+//             myGroceryArray[1] = "Ice Cream";
+//             myGroceryArray[0] = "Guacamole NEW";            
+
+//             Console.WriteLine(myGroceryArray[0]);
+//             Console.WriteLine(myGroceryArray[1]);
+//             // Console.WriteLine(myGroceryArray[2]); 
+//             // ERROR: Outside bounds of array length of 2
+
+//             string[] mySecondGroceryArray = {"Apples", "Eggs"};
+
+//             // mySecondGroceryArray[2] = "";
+//             // ERROR: Outside bounds of array length of 2
+
+//             Console.WriteLine(mySecondGroceryArray);
+//             Console.WriteLine(mySecondGroceryArray[0]);
+//             Console.WriteLine(mySecondGroceryArray[1]);
+//             // Console.WriteLine(mySecondGroceryArray[2]);
+//             // ERROR: Outside bounds of array length of 2
+             
+//             // ----------------------
+//             // LISTS
+//             // ----------------------
+
+//             // don't need to specify length or pass in values
+
+//             List<string> myGroceryList = new List<string>();
+
+//             Console.WriteLine(myGroceryList);
+//             // Console.WriteLine(myGroceryList[0]); // ERROR: outside of bounds
+
+//             List<string> mySecondGroceryList = new List<string>() {"milk", "cheese"};
+
+//             Console.WriteLine(mySecondGroceryList);
+//             Console.WriteLine(mySecondGroceryList[0]);
+//             Console.WriteLine(mySecondGroceryList[1]);
+
+//             // add item to list using Add() method in List class
+//             mySecondGroceryList.Add("oranges");
+//             Console.WriteLine(mySecondGroceryList[2]);
+
+//             // ----------------------
+//             // IENUMERABLE
+//             // ----------------------
+
+//         	// we need to enumerate through the collection
+//             // ienumerable is faster for looping
+//             // If we:
+//                 // want to look @ every element = IEnumerable
+//                 // want to access a single element & dynamically change it = List
+
+
+//             // Declare the ienumerable using existing List or Array
+//                 // can't allocate elements to ienumerable
+//             IEnumerable<string> myGroceryIEnumerable = mySecondGroceryList;
+       
+//             // Access the first value in myGroceryIEnumerable
+//             Console.WriteLine(myGroceryIEnumerable.First());
+
+//             // can't access the index of the IEnumerable (not indexable)
+//             //Console.WriteLine(myGroceryIEnumerable[0]); // ERROR: cannot index
+            
+//             // ----------------------          
+//             // Multi-Dimensional ARRAY
+//             // ----------------------
+
+//             // set values for 2d array when declaring
+//             string[,] myTwoDimensionalArray = new string[,] 
+//             {
+//                 { "choc", "banana" },
+//                 { "pie", "cake" }
+//             };
+
+//             // use double index to reference 1st and 2nd dimensions in array
+//             Console.WriteLine(myTwoDimensionalArray[0,0]);
+//             Console.WriteLine(myTwoDimensionalArray[1,1]);
+
+//             // ----------------------          
+//             // Dictionary
+//             // ----------------------
+
+//             // key / value pairs
+//             // must declare pairs of array (key/value)
+//             Dictionary<string, string> myGroceryDictionary = new Dictionary<string, string>
+//             {
+//                 {"Cheese", "Dairy"}
+//             };
+
+//             // use key to obtain value
+//             Console.WriteLine(myGroceryDictionary["Cheese"]);
+
+//             // map to an array of strings
+//             Dictionary<string, string[]> my2DGroceryDictionary = new Dictionary<string, string[]>()
+//             {
+//                 {"Dairy", new string[]{"Cheese", "Milk", "Yoghurt"}}
+//             };
+
+//             // use key & index to obtain value
+//             Console.WriteLine(my2DGroceryDictionary["Dairy"][2]);
+
+//             // EXERCISE:
+//             // create a dictionary with string keys and decimal values called "itemPrices".
+//             // Set the price for "cheese" to 5.99 and the price for  "carrots" to 2.99.
+
+//             Dictionary<string,decimal> itemPrices = new Dictionary<string,decimal>
+//             {
+//                 {"cheese", 5.99m},
+//                 {"carrots", 2.99m}
+//             };
+
+//             Console.WriteLine(itemPrices["cheese"].GetType());
+//             Console.WriteLine(itemPrices["cheese"]);
+//             Console.WriteLine(itemPrices["carrots"]);
+
+//         }
+//     }
+// }
+
+/* _____________________________________________________
+
+    Operators & Conditionals
+_______________________________________________________*/
+
 using System;
 
 namespace HelloWorld
@@ -178,132 +323,149 @@ namespace HelloWorld
         static void Main(string[] args)
         {
  
+            // ----------------------------------
+            // MATH OPERATORS
+            // ++, +=, -=, +, -, *, /
+            // ----------------------------------
+
+            int myInt = 5;
+            int mySecondIt = 10;
+            Console.WriteLine(myInt);
+
+            // increments variable by 1
+            myInt++; 
+            Console.WriteLine(myInt);
+
+            // add value (7) to variable
+            myInt+= 7;
+            Console.WriteLine(myInt);
+
+            // minus value (8) to variable
+            myInt-= 8;
+            Console.WriteLine(myInt);
+
+            // multiply
+            Console.WriteLine(myInt * mySecondIt);
+
+            // divide
+            Console.WriteLine(myInt / mySecondIt);
+
+            // minus
+            Console.WriteLine(myInt - mySecondIt);
+
+            // add
+            Console.WriteLine(myInt + mySecondIt);
+
+            // ----------------------------------
+            // PEMDAS 
+            // (), Exponents, *, /, +, -   
+            // ----------------------------------
+
+            // if * and / grouped together (do whatever comes first)
+            // if + and - grouped together (do whatever comes first)
+
+            Console.WriteLine(5 + 5 * 10);
+            // multiply first, addition second
+                // 5 * 10 = 50 
+                // 50 + 5 = 55
+
+            Console.WriteLine((5 + 5) * 10);
+            // parenthses first, then multiplication
+                // 5 + 5 = 10
+                // 10 * 10 = 100
+
+            // ----------------------------------
+            // MATH.Method() 
+            // Pow, Sqrt  
+            // ----------------------------------
+
+            Console.WriteLine(Math.Pow(5,2));
+            // Exponents
+                // 5 to the power of 2
+                // 5 x 5 = 25
+                // 5 squared = 25
+
+            Console.WriteLine(Math.Pow(5,4));
+            // Exponents
+                // 5 to the power of 4
+                // 5 x 5 x 5 x 5 = 625
+                // 5 cubed = 625
+
+            Console.WriteLine(Math.Sqrt(25));
+            // Exponents
+                // Square root of 25 = 5
+
             // ----------------------
-            // ARRAYS
-            // ----------------------
-
-            // array -> immutable length
-            // list -> dynamic length
-
-            // array of strings
-            string[] myGroceryArray = new string[2];
-            // type structure variable = create string array with length of 2
-
-            myGroceryArray[0] = "Guacamole";
-            myGroceryArray[1] = "Ice Cream";
-            myGroceryArray[0] = "Guacamole NEW";            
-
-            Console.WriteLine(myGroceryArray[0]);
-            Console.WriteLine(myGroceryArray[1]);
-            // Console.WriteLine(myGroceryArray[2]); 
-            // ERROR: Outside bounds of array length of 2
-
-            string[] mySecondGroceryArray = {"Apples", "Eggs"};
-
-            // mySecondGroceryArray[2] = "";
-            // ERROR: Outside bounds of array length of 2
-
-            Console.WriteLine(mySecondGroceryArray);
-            Console.WriteLine(mySecondGroceryArray[0]);
-            Console.WriteLine(mySecondGroceryArray[1]);
-            // Console.WriteLine(mySecondGroceryArray[2]);
-            // ERROR: Outside bounds of array length of 2
-             
-            // ----------------------
-            // LISTS
-            // ----------------------
-
-            // don't need to specify length or pass in values
-
-            List<string> myGroceryList = new List<string>();
-
-            Console.WriteLine(myGroceryList);
-            // Console.WriteLine(myGroceryList[0]); // ERROR: outside of bounds
-
-            List<string> mySecondGroceryList = new List<string>() {"milk", "cheese"};
-
-            Console.WriteLine(mySecondGroceryList);
-            Console.WriteLine(mySecondGroceryList[0]);
-            Console.WriteLine(mySecondGroceryList[1]);
-
-            // add item to list using Add() method in List class
-            mySecondGroceryList.Add("oranges");
-            Console.WriteLine(mySecondGroceryList[2]);
-
-            // ----------------------
-            // IENUMERABLE
-            // ----------------------
-
-        	// we need to enumerate through the collection
-            // ienumerable is faster for looping
-            // If we:
-                // want to look @ every element = IEnumerable
-                // want to access a single element & dynamically change it = List
-
-
-            // Declare the ienumerable using existing List or Array
-                // can't allocate elements to ienumerable
-            IEnumerable<string> myGroceryIEnumerable = mySecondGroceryList;
-       
-            // Access the first value in myGroceryIEnumerable
-            Console.WriteLine(myGroceryIEnumerable.First());
-
-            // can't access the index of the IEnumerable (not indexable)
-            //Console.WriteLine(myGroceryIEnumerable[0]); // ERROR: cannot index
-            
-            // ----------------------          
-            // Multi-Dimensional ARRAY
-            // ----------------------
-
-            // set values for 2d array when declaring
-            string[,] myTwoDimensionalArray = new string[,] 
-            {
-                { "choc", "banana" },
-                { "pie", "cake" }
-            };
-
-            // use double index to reference 1st and 2nd dimensions in array
-            Console.WriteLine(myTwoDimensionalArray[0,0]);
-            Console.WriteLine(myTwoDimensionalArray[1,1]);
-
-            // ----------------------          
-            // Dictionary
+            // STRING OPERATORS
             // ----------------------
 
-            // key / value pairs
-            // must declare pairs of array (key/value)
-            Dictionary<string, string> myGroceryDictionary = new Dictionary<string, string>
-            {
-                {"Cheese", "Dairy"}
-            };
+            string myString = "first part";
+            Console.WriteLine(myString);
 
-            // use key to obtain value
-            Console.WriteLine(myGroceryDictionary["Cheese"]);
+            myString += ". second part";
+            Console.WriteLine(myString);
 
-            // map to an array of strings
-            Dictionary<string, string[]> my2DGroceryDictionary = new Dictionary<string, string[]>()
-            {
-                {"Dairy", new string[]{"Cheese", "Milk", "Yoghurt"}}
-            };
+            myString = myString + ". third part.";
+            Console.WriteLine(myString);
 
-            // use key & index to obtain value
-            Console.WriteLine(my2DGroceryDictionary["Dairy"][2]);
+            // use escape \ to ignore next protected character
+            myString = myString + " \"third\\ part.";
+            // Use \ to print " from: "third
+            // Use \ to print d\ from: "d\\
+            Console.WriteLine(myString);
 
-            // EXERCISE:
-            // create a dictionary with string keys and decimal values called "itemPrices".
-            // Set the price for "cheese" to 5.99 and the price for  "carrots" to 2.99.
+            // split the string into an array
+            string[] myStringArr = myString.Split(' ');
+            // when a space is identified, split that element from the string into the array
+            Console.WriteLine(myStringArr[0]);
+            Console.WriteLine(myStringArr[1]);            
 
-            Dictionary<string,decimal> itemPrices = new Dictionary<string,decimal>
-            {
-                {"cheese", 5.99m},
-                {"carrots", 2.99m}
-            };
+            // split the string into an array
+            string[] myStringArr2 = myString.Split(". ");
+            // when a ". " is identified, split that element from the string into the array
+            Console.WriteLine(myStringArr2[0]);
+            Console.WriteLine(myStringArr2[1]);
 
-            Console.WriteLine(itemPrices["cheese"].GetType());
-            Console.WriteLine(itemPrices["cheese"]);
-            Console.WriteLine(itemPrices["carrots"]);
+            // ----------------------
+            // CONDITIONALS
+            // ----------------------
 
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+// Template
+
+/* _____________________________________________________
+
+    Thing
+_______________________________________________________*/
+
+// using System;
+
+// namespace HelloWorld
+// {
+//     internal class Program
+//     {
+//         // method: something a class can do
+//         // Main runs by default
+//         static void Main(string[] args)
+//         {
+ 
+//             // ----------------------
+//             // THING
+//             // ----------------------
+
+//         }
+//     }
+// }
 

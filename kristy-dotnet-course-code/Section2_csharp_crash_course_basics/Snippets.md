@@ -28,6 +28,10 @@
 * [Multi-Dimensional Array](#multi-dimensional-array)
 * [Dictionaries](#dictionaries)
 
+**OPERATORS & CONDITIONALS:**
+* [Thing](#)
+* [Thing](#)
+* [Thing](#)
 <br>
 
 ---
@@ -627,6 +631,170 @@ Result:
             System.Decimal
             5.99
             2.99
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **Math Operators**
+
+* ++, +=, -=, +, -, *, /
+
+    ```csharp
+        int myInt = 5;
+        int mySecondIt = 10;
+        Console.WriteLine(myInt);
+
+        // increments variable by 1
+        myInt++; 
+        Console.WriteLine(myInt);
+
+        // add value (7) to variable
+        myInt+= 7;
+        Console.WriteLine(myInt);
+
+        // minus value (8) to variable
+        myInt-= 8;
+        Console.WriteLine(myInt);
+
+        // multiply
+        Console.WriteLine(myInt * mySecondIt);
+
+        // divide
+        Console.WriteLine(myInt / mySecondIt);
+
+        // minus
+        Console.WriteLine(myInt - mySecondIt);
+
+        // add
+        Console.WriteLine(myInt + mySecondIt);
+    ```
+    Result:
+
+        5
+        6
+        13
+        5
+        50
+        0
+        -5
+        15
+    
+* `PEMDAS`: (), Exponents, *, /, +, -   
+
+    ```csharp
+        // * and / grouped together - do what comes first
+        // + and - grouped together - do what comes first
+
+        Console.WriteLine(5 + 5 * 10);
+        // multiply first, addition second
+            // 5 * 10 = 50 
+            // 50 + 5 = 55
+
+        Console.WriteLine((5 + 5) * 10);
+        // parenthses first, then multiplication
+            // 5 + 5 = 10
+            // 10 * 10 = 100
+    ```
+    Result:
+
+        55
+        100
+
+* `MATH.Method()`: Pow, Sqrt 
+
+    ```csharp
+        Console.WriteLine(Math.Pow(5,2));
+        // Exponents
+            // 5 to the power of 2
+            // 5 x 5 = 25
+            // 5 squared = 25
+
+        Console.WriteLine(Math.Pow(5,4));
+        // Exponents
+            // 5 to the power of 4
+            // 5 x 5 x 5 x 5 = 625
+            // 5 cubed = 625
+
+        Console.WriteLine(Math.Sqrt(25));
+        // Exponents
+            // Square root of 25 = 5
+    ```
+    Result:
+
+        25
+        625
+        5
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **String Operators**
+
+* +=, =,
+
+    ```csharp
+
+        string myString = "first part";
+        Console.WriteLine(myString);
+
+        myString += ". second part";
+        Console.WriteLine(myString);
+
+        myString = myString + ". third part.";
+        Console.WriteLine(myString);
+    ```
+    Result:
+
+        first part
+        first part. second part
+        first part. second part. third part.
+
+* use escape `\` to ignore next protected character
+
+    ```csharp
+        myString = myString + " \"third\\ part.";
+        // Use \ to print " from: "third
+        // Use \ to print d\ from: "d\\
+        Console.WriteLine(myString);
+
+    ```
+    Result:
+
+        first part. second part. third part. "third\ part.
+
+* split the string into an array using one character as separator
+
+    ```csharp
+        string[] myStringArr = myString.Split(' ');
+        // when a space is identified: 
+        // split element from the string into the array
+
+        Console.WriteLine(myStringArr[0]);
+        Console.WriteLine(myStringArr[1]);   
+
+    ```
+    Result:
+
+        first
+        part.
+
+* split the string into an array using multiple characters as separator
+
+    ```csharp
+        string[] myStringArr2 = myString.Split(". ");
+        // when a ". " is identified, 
+        // split that element from the string into the array
+
+        Console.WriteLine(myStringArr2[0]);
+        Console.WriteLine(myStringArr2[1]);  
+
+    ```
+    Result:
+
+        first part
+        second part
 
 
 ---------
