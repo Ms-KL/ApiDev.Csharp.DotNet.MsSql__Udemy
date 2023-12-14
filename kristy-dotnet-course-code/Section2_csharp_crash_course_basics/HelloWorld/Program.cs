@@ -55,6 +55,7 @@ _______________________________________________________*/
 // {
 //     internal class Program
 //     {
+            // Console.WriteLine("VARIABLES");    
 //         // method: something a class can do
 //         // Main runs by default
 //         static void Main(string[] args)
@@ -173,6 +174,7 @@ _______________________________________________________*/
 // {
 //     internal class Program
 //     {
+            // Console.WriteLine("DATA STRUCTURES");    
 //         // method: something a class can do
 //         // Main runs by default
 //         static void Main(string[] args)
@@ -312,160 +314,306 @@ _______________________________________________________*/
     Operators & Conditionals
 _______________________________________________________*/
 
+// using System;
+
+// namespace HelloWorld
+// {
+//     internal class Program
+//     {
+            // Console.WriteLine("OPERATORS & CONDITIONALS");
+//         // method: something a class can do
+//         // Main runs by default
+//         static void Main(string[] args)
+//         {
+ 
+//             // ----------------------------------
+//             // MATH OPERATORS
+//             // ++, +=, -=, +, -, *, /
+//             // ----------------------------------
+
+//             int myInt = 5;
+//             int mySecondIt = 10;
+//             Console.WriteLine(myInt);
+
+//             // increments variable by 1
+//             myInt++; 
+//             Console.WriteLine(myInt);
+
+//             // add value (7) to variable
+//             myInt+= 7;
+//             Console.WriteLine(myInt);
+
+//             // minus value (8) to variable
+//             myInt-= 8;
+//             Console.WriteLine(myInt);
+
+//             // multiply
+//             Console.WriteLine(myInt * mySecondIt);
+
+//             // divide
+//             Console.WriteLine(myInt / mySecondIt);
+
+//             // minus
+//             Console.WriteLine(myInt - mySecondIt);
+
+//             // add
+//             Console.WriteLine(myInt + mySecondIt);
+
+//             // ----------------------------------
+//             // PEMDAS 
+//             // (), Exponents, *, /, +, -   
+//             // ----------------------------------
+
+//             // if * and / grouped together (do whatever comes first)
+//             // if + and - grouped together (do whatever comes first)
+
+//             Console.WriteLine(5 + 5 * 10);
+//             // multiply first, addition second
+//                 // 5 * 10 = 50 
+//                 // 50 + 5 = 55
+
+//             Console.WriteLine((5 + 5) * 10);
+//             // parenthses first, then multiplication
+//                 // 5 + 5 = 10
+//                 // 10 * 10 = 100
+
+//             // ----------------------------------
+//             // MATH.Method() 
+//             // Pow, Sqrt  
+//             // ----------------------------------
+
+//             Console.WriteLine(Math.Pow(5,2));
+//             // Exponents
+//                 // 5 to the power of 2
+//                 // 5 x 5 = 25
+//                 // 5 squared = 25
+
+//             Console.WriteLine(Math.Pow(5,4));
+//             // Exponents
+//                 // 5 to the power of 4
+//                 // 5 x 5 x 5 x 5 = 625
+//                 // 5 cubed = 625
+
+//             Console.WriteLine(Math.Sqrt(25));
+//             // Exponents
+//                 // Square root of 25 = 5
+
+//             // ----------------------
+//             // STRING OPERATORS
+//             // ----------------------
+
+//             string myString = "first part";
+//             Console.WriteLine(myString);
+
+//             myString += ". second part";
+//             Console.WriteLine(myString);
+
+//             myString = myString + ". third part.";
+//             Console.WriteLine(myString);
+
+//             // use escape \ to ignore next protected character
+//             myString = myString + " \"third\\ part.";
+//             // Use \ to print " from: "third
+//             // Use \ to print d\ from: "d\\
+//             Console.WriteLine(myString);
+
+//             // split the string into an array
+//             string[] myStringArr = myString.Split(' ');
+//             // when a space is identified, split that element from the string into the array
+//             Console.WriteLine(myStringArr[0]);
+//             Console.WriteLine(myStringArr[1]);            
+
+//             // split the string into an array
+//             string[] myStringArr2 = myString.Split(". ");
+//             // when a ". " is identified, split that element from the string into the array
+//             Console.WriteLine(myStringArr2[0]);
+//             Console.WriteLine(myStringArr2[1]);
+
+//             // ----------------------
+//             // CONDITIONALS
+//             // ----------------------
+
+//             int myIntNew = 5;
+//             int mySecondInt = 10;
+
+//             Console.WriteLine(myIntNew.Equals(mySecondInt)); // false
+//             Console.WriteLine(myIntNew.Equals(mySecondInt/2)); // true
+
+//             // equal to
+//             Console.WriteLine(myIntNew == mySecondInt ); // false  
+//             Console.WriteLine(myIntNew == mySecondInt / 2 ); // true  
+
+//             // equal to
+//             Console.WriteLine(myIntNew != mySecondInt ); // true  
+//             Console.WriteLine(myIntNew != mySecondInt / 2 ); // false  
+
+//             // greater than, less than, equal to
+//             Console.WriteLine(myIntNew >= mySecondInt); // false          
+//             Console.WriteLine(myIntNew >= mySecondInt / 2); // true
+//             Console.WriteLine(myIntNew > mySecondInt); // false
+//             Console.WriteLine(myIntNew > mySecondInt - 6); // true
+//             Console.WriteLine(myIntNew <= mySecondInt); // true
+//             Console.WriteLine(myIntNew < mySecondInt); // true  
+
+//             // && = AND   
+//             Console.WriteLine(5 < 10 && 5 > 10); // false
+//             // check: 5 less than 10 AND 5 greater than 10
+
+//             // || = OR   
+//             Console.WriteLine(5 < 10 || 5 > 10); // true
+//             // check: 5 less than 10 OR 5 greater than 10
+
+//         }
+//     }
+// }
+
+/* _____________________________________________________
+    
+    Conditional Statements
+_______________________________________________________*/
+
 using System;
 
 namespace HelloWorld
 {
     internal class Program
     {
-        // method: something a class can do
-        // Main runs by default
         static void Main(string[] args)
         {
- 
-            // ----------------------------------
-            // MATH OPERATORS
-            // ++, +=, -=, +, -, *, /
-            // ----------------------------------
+            Console.WriteLine("CONDITIONAL STATEMENTS");
+
+            // ----------------------
+            // If, Else If, Else
+            // ----------------------
+            
+            // IF (True) STATEMENT
+            // Code doesn't run when false
 
             int myInt = 5;
-            int mySecondIt = 10;
-            Console.WriteLine(myInt);
-
-            // increments variable by 1
-            myInt++; 
-            Console.WriteLine(myInt);
-
-            // add value (7) to variable
-            myInt+= 7;
-            Console.WriteLine(myInt);
-
-            // minus value (8) to variable
-            myInt-= 8;
-            Console.WriteLine(myInt);
-
-            // multiply
-            Console.WriteLine(myInt * mySecondIt);
-
-            // divide
-            Console.WriteLine(myInt / mySecondIt);
-
-            // minus
-            Console.WriteLine(myInt - mySecondIt);
-
-            // add
-            Console.WriteLine(myInt + mySecondIt);
-
-            // ----------------------------------
-            // PEMDAS 
-            // (), Exponents, *, /, +, -   
-            // ----------------------------------
-
-            // if * and / grouped together (do whatever comes first)
-            // if + and - grouped together (do whatever comes first)
-
-            Console.WriteLine(5 + 5 * 10);
-            // multiply first, addition second
-                // 5 * 10 = 50 
-                // 50 + 5 = 55
-
-            Console.WriteLine((5 + 5) * 10);
-            // parenthses first, then multiplication
-                // 5 + 5 = 10
-                // 10 * 10 = 100
-
-            // ----------------------------------
-            // MATH.Method() 
-            // Pow, Sqrt  
-            // ----------------------------------
-
-            Console.WriteLine(Math.Pow(5,2));
-            // Exponents
-                // 5 to the power of 2
-                // 5 x 5 = 25
-                // 5 squared = 25
-
-            Console.WriteLine(Math.Pow(5,4));
-            // Exponents
-                // 5 to the power of 4
-                // 5 x 5 x 5 x 5 = 625
-                // 5 cubed = 625
-
-            Console.WriteLine(Math.Sqrt(25));
-            // Exponents
-                // Square root of 25 = 5
-
-            // ----------------------
-            // STRING OPERATORS
-            // ----------------------
-
-            string myString = "first part";
-            Console.WriteLine(myString);
-
-            myString += ". second part";
-            Console.WriteLine(myString);
-
-            myString = myString + ". third part.";
-            Console.WriteLine(myString);
-
-            // use escape \ to ignore next protected character
-            myString = myString + " \"third\\ part.";
-            // Use \ to print " from: "third
-            // Use \ to print d\ from: "d\\
-            Console.WriteLine(myString);
-
-            // split the string into an array
-            string[] myStringArr = myString.Split(' ');
-            // when a space is identified, split that element from the string into the array
-            Console.WriteLine(myStringArr[0]);
-            Console.WriteLine(myStringArr[1]);            
-
-            // split the string into an array
-            string[] myStringArr2 = myString.Split(". ");
-            // when a ". " is identified, split that element from the string into the array
-            Console.WriteLine(myStringArr2[0]);
-            Console.WriteLine(myStringArr2[1]);
-
-            // ----------------------
-            // CONDITIONALS
-            // ----------------------
-
-            int myIntNew = 5;
             int mySecondInt = 10;
 
-            Console.WriteLine(myIntNew.Equals(mySecondInt)); // false
-            Console.WriteLine(myIntNew.Equals(mySecondInt/2)); // true
+            if (myInt > mySecondInt)
+            {
+                myInt += 10;
+            }
 
-            // equal to
-            Console.WriteLine(myIntNew == mySecondInt ); // false  
-            Console.WriteLine(myIntNew == mySecondInt / 2 ); // true  
+            Console.WriteLine(myInt);
+            
+            Console.WriteLine("---");
 
-            // equal to
-            Console.WriteLine(myIntNew != mySecondInt ); // true  
-            Console.WriteLine(myIntNew != mySecondInt / 2 ); // false  
+            // IF (True) + IF (True) STATEMENT
+            // Code doesn't run when false
 
-            // greater than, less than, equal to
-            Console.WriteLine(myIntNew >= mySecondInt); // false          
-            Console.WriteLine(myIntNew >= mySecondInt / 2); // true
-            Console.WriteLine(myIntNew > mySecondInt); // false
-            Console.WriteLine(myIntNew > mySecondInt - 6); // true
-            Console.WriteLine(myIntNew <= mySecondInt); // true
-            Console.WriteLine(myIntNew < mySecondInt); // true  
+            string myCow = "cow";
+            string myCapitalisedCow = "Cow";
 
-            // && = AND   
-            Console.WriteLine(5 < 10 && 5 > 10); // false
-            // check: 5 less than 10 AND 5 greater than 10
+            if ( myCow == myCapitalisedCow)
+            {
+                Console.WriteLine("equal");
+            }
 
-            // || = OR   
-            Console.WriteLine(5 < 10 || 5 > 10); // true
-            // check: 5 less than 10 OR 5 greater than 10
+            if ( myCow != myCapitalisedCow)
+            {
+                Console.WriteLine("not equal");
+            }
 
+            Console.WriteLine("---");
+
+            // IF (True) ELSE (otherwise) STATEMENT
+            // Run If code when true, otherwise run else code
+
+            string myCow2 = "cow";
+            string myCapitalisedCow2 = "Cow";
+
+            if ( myCow2 == myCapitalisedCow2)
+            {
+                Console.WriteLine("equal");
+            }
+            else
+            {
+                Console.WriteLine("not equal");
+            }  
+
+            Console.WriteLine("---");
+
+            // IF (True) ELSE IF (alternative condition TRUE) STATEMENT
+            // Run IF when true, when false: run ELSE IF when true, when false: do nothing
+
+            string myCow3 = "cow";
+            string myCapitalisedCow3 = "bow";
+
+            if ( myCow3 == myCapitalisedCow3)
+            {
+                Console.WriteLine("equal");
+            }
+            else if (myCow3 == myCapitalisedCow3.ToLower())
+            {
+                Console.WriteLine("Equal without case sensitivity");
+            }   
+
+            Console.WriteLine("---");
+
+            // IF (True) ELSE IF (alternative condition TRUE) ELSE (otherwise) STATEMENT
+            // Run IF when true, when false: run ELSE IF when true, when false: run ELSE
+
+            string myCow4 = "cow";
+            string myCapitalisedCow4 = "banana";
+
+            if ( myCow4 == myCapitalisedCow4)
+            {
+                Console.WriteLine("equal");
+            }
+            else if (myCow4 == myCapitalisedCow4.ToLower())
+            {
+                Console.WriteLine("Equal without case sensitivity");
+            }   
+            else
+            {
+                Console.WriteLine("not equal");
+            }   
+
+            Console.WriteLine("---");
+
+            // ----------------------------------
+            // Switch Statements
+            // (alternative to If, Else If, Else)
+            // ----------------------------------
+
+            // similar to If - Else if - Else
+            // cleaner
+            // good for when comparing to the same thing
+            // can ONLY compare to CONSTANT values
+            // eg: compare a given variable to a constant
+            //     given variable = myCow
+            //     comparison variable = myCapitalisedCow <-- CANNOT USE
+            //     Instead: define a permanent value (eg "Cow" instead of variable)
+            
+            string myCow5 = "Pie";
+
+            switch (myCow5)
+            {
+                // when myCow == "cow"
+                // same as IF
+                case "cow":
+                    Console.WriteLine("Lowercase");
+                    break; // exit switch if true
+                // when myCow == "Cow"
+                // same as ELSE IF
+                case "Cow":
+                    Console.WriteLine("Uppercase");
+                    break; // exit switch if true
+                // when above cases are not true, run default
+                // same as ELSE
+                default:
+                    Console.WriteLine("Default Ran");
+                    break; // exit switch
+            };
+
+            Console.WriteLine("---");
 
         }
     }
 }
-
-
 
 
 
@@ -487,6 +635,7 @@ _______________________________________________________*/
 // {
 //     internal class Program
 //     {
+            // Console.WriteLine("TITLE OF SECTION");    
 //         // method: something a class can do
 //         // Main runs by default
 //         static void Main(string[] args)

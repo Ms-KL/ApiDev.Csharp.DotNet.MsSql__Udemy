@@ -31,8 +31,15 @@
 **OPERATORS & CONDITIONALS:**
 * [Math Operators](#math-operators)
 * [String Operators](#string-operators)
-* [Thing](#)
+* [Conditionals](#conditionals)
+
+**CONDITIONAL STATEMENTS:**
+* [If, Else If, Else](#conditional-statements-if-else-if-else)
+* [Switch](#conditional-statements-switch)
+
 <br>
+
+[Skip to End](#end)
 
 ---
 
@@ -837,3 +844,228 @@ Result:
             // check: 5 less than 10 OR 5 greater than 10
 
     ```
+
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **Conditional Statements: If, Else If, Else**
+
+* if (true):
+    ```csharp
+        // IF (True) STATEMENT
+        // Code doesn't run when false
+
+        int myInt = 5;
+        int mySecondInt = 10;
+
+        if (myInt > mySecondInt)
+        // false: code doesn't run
+        {
+            myInt += 10;
+        }
+
+    ```
+    Result:
+
+        <nothing>
+
+ * multiple if:
+    ```csharp
+        // IF (True) + IF (True) 
+        // Code doesn't run when false
+
+        string myCow = "cow";
+        string myCapitalisedCow = "Cow";
+
+        if ( myCow == myCapitalisedCow)
+        {
+            Console.WriteLine("equal");
+        }
+
+        if ( myCow != myCapitalisedCow)
+        {
+            Console.WriteLine("not equal");
+        }
+    ```
+    Result:
+
+        not equal      
+
+ * if - else:
+    ```csharp
+        // IF (True) 
+        // ELSE (otherwise) 
+        // Same as multiple if statements, but combined
+        // Run If code when true, otherwise run else code
+
+        string myCow2 = "cow";
+        string myCapitalisedCow2 = "Cow";
+
+        if ( myCow2 == myCapitalisedCow2)
+        {
+            Console.WriteLine("equal");
+        }
+        else
+        {
+            Console.WriteLine("not equal");
+        } 
+    ```
+    Result:
+
+        not equal  
+
+ * if - else if:
+    ```csharp
+        // IF (True) 
+        // ELSE IF (alternative condition TRUE) 
+        // Run IF when true, when false: 
+            // run ELSE IF when true, when false: 
+                // do nothing
+
+        string myCow3 = "cow";
+        string myCapitalisedCow3 = "bow";
+
+        if ( myCow3 == myCapitalisedCow3)
+        {
+            Console.WriteLine("equal");
+        }
+        else if (myCow3 == myCapitalisedCow3.ToLower())
+        {
+            Console.WriteLine("Equal without case sensitivity");
+        }   
+    ```
+    Result:
+
+         <nothing>
+    
+ * if - else if - else:
+    ```csharp
+        // IF (True) 
+        // ELSE IF (alternative condition TRUE) 
+        // ELSE (otherwise) 
+        // Run IF when true, when false: 
+            // run ELSE IF when true, when false: 
+             // run ELSE
+
+        string myCow4 = "cow";
+        string myCapitalisedCow4 = "banana";
+
+        if ( myCow4 == myCapitalisedCow4)
+        {
+            Console.WriteLine("equal");
+        }
+        else if (myCow4 == myCapitalisedCow4.ToLower())
+        {
+            Console.WriteLine("Equal without case sensitivity");
+        }   
+        else
+        {
+            Console.WriteLine("not equal");
+        }   
+    ```
+    Result:
+
+        not equal
+        
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **Conditional Statements: Switch**
+
+* alternative to if - else if - else
+* cleaner option
+* good for when comparing to the same thing
+* can ONLY compare to CONSTANT values
+* eg: compare a given variable to a constant
+    * given variable = `myCow`
+    * comparison variable = `myCapitalisedCow` <-- CANNOT USE
+    * Instead: define a permanent value (eg `"Cow"` instead of variable)
+
+* myCow example using `switch` instead of if - else if - else:
+    ```csharp
+        string myCow5 = "Pie";
+
+        switch (myCow5)
+        {
+            // when myCow == "cow"
+            // same as IF
+            case "cow":
+                Console.WriteLine("Lowercase");
+                break; // exit switch if true
+
+            // when myCow == "Cow"
+            // same as ELSE IF
+            case "Cow":
+                Console.WriteLine("Uppercase");
+                break; // exit switch if true
+
+            // when above cases are not true, run default
+            // same as ELSE
+            default:
+                Console.WriteLine("Default Ran");
+                break; // exit switch
+        };
+    ```
+    Result:
+
+        Default Ran
+
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **Loops**
+
+* for = set number of times it will run
+* while = til a conditional statement is false
+* do while = will run at least once and run as long as a conditional statement is true
+* thing
+    ```csharp
+        <insert>
+    ```
+    Result:
+
+        Thing
+
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **Methods, Arguments, Return**
+
+* gives ability to break up / refactor code
+* access in multiple files & reuse logic (generalisable)
+* pass values to a method (the values are called arguments)
+* return values and pass between methods
+* thing
+    ```csharp
+        <insert>
+    ```
+    Result:
+
+        Thing   
+
+<br>
+
+*Back to [contents](#contents)*
+
+---
+### **Scope**
+
+* decide where duplicate variable names can be used in different contexts, in the same program
+* 
+* thing
+    ```csharp
+        <insert>
+    ```
+    Result:
+
+        Thing              
+
+#### **End**
