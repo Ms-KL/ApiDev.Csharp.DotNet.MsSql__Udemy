@@ -1021,17 +1021,213 @@ Result:
 ---
 ### **Loops**
 
-* for = set number of times it will run
-* while = til a conditional statement is false
-* do while = will run at least once and run as long as a conditional statement is true
-* thing
+* manual way of using items in a list/array 
     ```csharp
-        <insert>
+        int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35};   
+        DateTime startTime = DateTime.Now;
+
+        int totalValue = intsToCompress[0] + intsToCompress[1]
+            + intsToCompress[2] + intsToCompress[3] 
+            + intsToCompress[4] + intsToCompress[5]
+            + intsToCompress[6];
+
+        // Measure how long it takes to perform calculation
+        Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+        
+        Console.WriteLine(totalValue);
     ```
     Result:
 
-        Thing
+        0.0028033
+        147
 
+* **`for`** = set number of times it will run
+    * `for(type i = value; condition, increment){actionblock} `
+    ```csharp
+        // Instead of manually adding as above, use a for loop
+        // for 
+        // (
+            // starting index variable value, 
+            // run while condition is true, 
+            // increment for index per loop
+        // )
+
+        int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35};   
+        int totalValue = 0;
+        DateTime startTime = DateTime.Now;
+
+        for (int i = 0; i < intsToCompress.Length; i++)
+        {
+            totalValue += intsToCompress[i];
+            Console.WriteLine(totalValue);
+        }
+
+        // Measure how long it takes to perform calculation
+        Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+
+        Console.WriteLine(totalValue);
+    ```
+    Result:
+
+        10
+        25
+        45
+        70
+        100
+        112
+        147
+        0.0121354
+        147
+ 
+* **`for each`** = will run as long as the length of the array/list
+    * `foreach(type valueOfCurrentIndex in ArrayorList){actionblock}`
+    ```csharp
+        // faster than for loop
+        // keeps iteration in the bounds of the list/array
+
+        int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35};   
+        int totalValue = 0;
+        DateTime startTime = DateTime.Now;
+
+        foreach(int intForCompression in intsToCompress)
+        {
+            totalValue += intForCompression;
+            // for each loop: 
+                // add the value of the current item in the array (intForCompression) 
+                    // to the totalValue
+        }
+
+        // Measure how long it takes to perform calculation
+        Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+
+        Console.WriteLine(totalValue);
+    ```
+    Result:
+
+        0.0124326
+        147
+
+* **`while`** = til a conditional statement is false
+    * `while(condition){actionblockleadingtofalseresult}`
+    ```csharp
+        // need a condition to check to see if true in order to make loop run
+        int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35};   
+        int totalValue = 0;
+        int index = 0;
+
+        DateTime startTime = DateTime.Now;
+
+
+        while(index < intsToCompress.Length)
+        {
+            totalValue += intsToCompress[index];
+            index++;
+        }
+
+        // Measure how long it takes to perform calculation
+        Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+        Console.WriteLine(totalValue);
+    ```
+    Result:
+
+        0.0126718
+        147
+
+* **`do while`** = will run at least once and run as long as a conditional statement is true
+    * `do{actionblock}while(condition)`
+    ```csharp
+        // run code at least once and then until condition is true
+        int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35}; 
+        int totalValue = 0;
+        int index = 0;   
+        DateTime startTime = DateTime.Now;       
+
+        do
+        {
+            totalValue += intsToCompress[index];
+            //Console.WriteLine(index);
+            //Console.WriteLine(index < intsToCompress.Length);
+            index++;
+
+        }while(index < intsToCompress.Length);
+
+        // Measure how long it takes to perform calculation
+        Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+        Console.WriteLine(totalValue);
+    ```
+    Result:
+
+        0.0128469
+        147
+
+* alternative: use **`.Sum()`**:
+    ```csharp
+        int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35}; 
+        DateTime startTime = DateTime.Now; 
+
+        int totalValue = intsToCompress.Sum();
+        // Measure how long it takes to perform calculation
+
+        Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+        Console.WriteLine(totalValue);
+    ```
+    Result:
+
+        0.0208214
+        147
+
+* conditional **`foreach`**:
+    ```csharp
+        int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35}; 
+        int totalValue = 0;
+        DateTime startTime = DateTime.Now;         
+
+        foreach(int intForCompression in intsToCompress)
+        {
+            if (intForCompression > 20)
+            {
+                totalValue += intForCompression;
+                Console.WriteLine(intForCompression);
+            }
+        }
+
+        // Measure how long it takes to perform calculation
+        Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+        Console.WriteLine(totalValue);
+    ```
+    Result:
+
+        25
+        30
+        35
+        0.0246121
+        90
+
+* loops exercise using **`if` and `foreach`**:
+    ```csharp
+        // use a foreach loop to print every even number 
+            // in myNumberList to the console
+
+        List<int> myNumberList = new List<int>()
+        {
+            2, 3, 5, 6, 7, 9, 10, 123, 324, 54
+        };
+
+        foreach(int number in myNumberList)
+        {
+            if (number % 2 == 0)
+            {
+                Console.WriteLine(number);
+            };
+        };
+    ```
+    Result:
+
+        25
+        30
+        35
+        0.0246121
+        90
 <br>
 
 *Back to [contents](#contents)*

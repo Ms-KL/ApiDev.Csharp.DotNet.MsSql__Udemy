@@ -467,159 +467,338 @@ _______________________________________________________*/
 //     }
 // }
 
-/* _____________________________________________________
+// /* _____________________________________________________
     
-    Conditional Statements
+//     Conditional Statements
+// _______________________________________________________*/
+
+// using System;
+
+// namespace HelloWorld
+// {
+//     internal class Program
+//     {
+//         static void Main(string[] args)
+//         {
+//             Console.WriteLine("CONDITIONAL STATEMENTS");
+
+//             // ----------------------
+//             // If, Else If, Else
+//             // ----------------------
+            
+//             // IF (True) STATEMENT
+//             // Code doesn't run when false
+
+//             int myInt = 5;
+//             int mySecondInt = 10;
+
+//             if (myInt > mySecondInt)
+//             {
+//                 myInt += 10;
+//             }
+
+//             Console.WriteLine(myInt);
+            
+//             Console.WriteLine("---");
+
+//             // IF (True) + IF (True) STATEMENT
+//             // Code doesn't run when false
+
+//             string myCow = "cow";
+//             string myCapitalisedCow = "Cow";
+
+//             if ( myCow == myCapitalisedCow)
+//             {
+//                 Console.WriteLine("equal");
+//             }
+
+//             if ( myCow != myCapitalisedCow)
+//             {
+//                 Console.WriteLine("not equal");
+//             }
+
+//             Console.WriteLine("---");
+
+//             // IF (True) ELSE (otherwise) STATEMENT
+//             // Run If code when true, otherwise run else code
+
+//             string myCow2 = "cow";
+//             string myCapitalisedCow2 = "Cow";
+
+//             if ( myCow2 == myCapitalisedCow2)
+//             {
+//                 Console.WriteLine("equal");
+//             }
+//             else
+//             {
+//                 Console.WriteLine("not equal");
+//             }  
+
+//             Console.WriteLine("---");
+
+//             // IF (True) ELSE IF (alternative condition TRUE) STATEMENT
+//             // Run IF when true, when false: run ELSE IF when true, when false: do nothing
+
+//             string myCow3 = "cow";
+//             string myCapitalisedCow3 = "bow";
+
+//             if ( myCow3 == myCapitalisedCow3)
+//             {
+//                 Console.WriteLine("equal");
+//             }
+//             else if (myCow3 == myCapitalisedCow3.ToLower())
+//             {
+//                 Console.WriteLine("Equal without case sensitivity");
+//             }   
+
+//             Console.WriteLine("---");
+
+//             // IF (True) ELSE IF (alternative condition TRUE) ELSE (otherwise) STATEMENT
+//             // Run IF when true, when false: run ELSE IF when true, when false: run ELSE
+
+//             string myCow4 = "cow";
+//             string myCapitalisedCow4 = "banana";
+
+//             if ( myCow4 == myCapitalisedCow4)
+//             {
+//                 Console.WriteLine("equal");
+//             }
+//             else if (myCow4 == myCapitalisedCow4.ToLower())
+//             {
+//                 Console.WriteLine("Equal without case sensitivity");
+//             }   
+//             else
+//             {
+//                 Console.WriteLine("not equal");
+//             }   
+
+//             Console.WriteLine("---");
+
+//             // ----------------------------------
+//             // Switch Statements
+//             // (alternative to If, Else If, Else)
+//             // ----------------------------------
+
+//             // similar to If - Else if - Else
+//             // cleaner
+//             // good for when comparing to the same thing
+//             // can ONLY compare to CONSTANT values
+//             // eg: compare a given variable to a constant
+//             //     given variable = myCow
+//             //     comparison variable = myCapitalisedCow <-- CANNOT USE
+//             //     Instead: define a permanent value (eg "Cow" instead of variable)
+            
+//             string myCow5 = "Pie";
+
+//             switch (myCow5)
+//             {
+//                 // when myCow == "cow"
+//                 // same as IF
+//                 case "cow":
+//                     Console.WriteLine("Lowercase");
+//                     break; // exit switch if true
+//                 // when myCow == "Cow"
+//                 // same as ELSE IF
+//                 case "Cow":
+//                     Console.WriteLine("Uppercase");
+//                     break; // exit switch if true
+//                 // when above cases are not true, run default
+//                 // same as ELSE
+//                 default:
+//                     Console.WriteLine("Default Ran");
+//                     break; // exit switch
+//             };
+
+//             Console.WriteLine("---");
+
+//         }
+//     }
+// }
+
+
+/* _____________________________________________________
+
+    Loops
 _______________________________________________________*/
 
 using System;
+using System.Data;
 
 namespace HelloWorld
 {
     internal class Program
-    {
+    {    
+        // method: something a class can do
+        // Main runs by default
         static void Main(string[] args)
         {
-            Console.WriteLine("CONDITIONAL STATEMENTS");
+            Console.WriteLine("LOOPS");
 
             // ----------------------
-            // If, Else If, Else
+            // For Loop
             // ----------------------
-            
-            // IF (True) STATEMENT
-            // Code doesn't run when false
 
-            int myInt = 5;
-            int mySecondInt = 10;
+            int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35};
 
-            if (myInt > mySecondInt)
+            DateTime startTime = DateTime.Now;
+
+            int totalValue = intsToCompress[0] + intsToCompress[1]
+                + intsToCompress[2] + intsToCompress[3] 
+                + intsToCompress[4] + intsToCompress[5]
+                + intsToCompress[6];
+
+            // Measure how long it takes to perform calculation
+            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+
+            Console.WriteLine(totalValue);
+
+            // for loop
+            // Instead of manually adding as above, use a for loop
+            // for (starting index variable value, run while condition is true, increment for index per loop)
+
+            totalValue = 0;
+
+
+            Console.WriteLine("--For Loop--");
+            for (int i = 0; i < intsToCompress.Length; i++)
             {
-                myInt += 10;
+                totalValue += intsToCompress[i];
+                Console.WriteLine(totalValue);
             }
 
-            Console.WriteLine(myInt);
-            
-            Console.WriteLine("---");
+            // Measure how long it takes to perform calculation
+            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
 
-            // IF (True) + IF (True) STATEMENT
-            // Code doesn't run when false
+            Console.WriteLine(totalValue);
 
-            string myCow = "cow";
-            string myCapitalisedCow = "Cow";
+            // ----------------------
+            // For Each Loop
+            // ----------------------
 
-            if ( myCow == myCapitalisedCow)
+            // for each loop
+            // faster than for loop
+            // keeps iteration in the bounds of the list/array
+
+            Console.WriteLine("--For Each Loop--");
+
+            totalValue = 0;
+
+            foreach(int intForCompression in intsToCompress)
             {
-                Console.WriteLine("equal");
+                totalValue += intForCompression;
+                // for each loop, add the value of the current item in the array (intForCompression) to the totalValue
             }
 
-            if ( myCow != myCapitalisedCow)
+            // Measure how long it takes to perform calculation
+            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+            Console.WriteLine(totalValue);
+
+
+            // ----------------------
+            // While Loop
+            // ----------------------
+
+            // need a condition to check to see if true in order to make loop run
+
+            Console.WriteLine("--While Loop--");
+
+            totalValue = 0;
+
+            int index = 0;
+
+            while(index < intsToCompress.Length)
             {
-                Console.WriteLine("not equal");
+                totalValue += intsToCompress[index];
+                index++;
             }
 
-            Console.WriteLine("---");
+            // Measure how long it takes to perform calculation
+            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+            Console.WriteLine(totalValue);
 
-            // IF (True) ELSE (otherwise) STATEMENT
-            // Run If code when true, otherwise run else code
+            // ----------------------
+            // Do While Loop
+            // ----------------------
 
-            string myCow2 = "cow";
-            string myCapitalisedCow2 = "Cow";
+            // run code at least once and then until condition is true
 
-            if ( myCow2 == myCapitalisedCow2)
+            Console.WriteLine("--Do While Loop--");
+
+            totalValue = 0;
+
+            index = 0;
+
+            do
             {
-                Console.WriteLine("equal");
+                totalValue += intsToCompress[index];
+                //Console.WriteLine(index);
+                //Console.WriteLine(index < intsToCompress.Length);
+                index++;
+
+            }while(index < intsToCompress.Length);
+
+            // Measure how long it takes to perform calculation
+            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+            Console.WriteLine(totalValue);
+
+            // ----------------------
+            // .Sum()
+            // ----------------------
+
+            Console.WriteLine("--Sum--");
+
+            totalValue = intsToCompress.Sum();
+            // Measure how long it takes to perform calculation
+            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+            Console.WriteLine(totalValue);
+
+
+            // ----------------------
+            // Conditional For Each
+            // ----------------------
+
+            Console.WriteLine("--Conditional For Each--");
+
+            totalValue = 0;
+            foreach(int intForCompression in intsToCompress)
+            {
+                if (intForCompression > 20)
+                {
+                    totalValue += intForCompression;
+                    Console.WriteLine(intForCompression);
+                }
             }
-            else
-            {
-                Console.WriteLine("not equal");
-            }  
 
-            Console.WriteLine("---");
+            // Measure how long it takes to perform calculation
+            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+            Console.WriteLine(totalValue);
 
-            // IF (True) ELSE IF (alternative condition TRUE) STATEMENT
-            // Run IF when true, when false: run ELSE IF when true, when false: do nothing
 
-            string myCow3 = "cow";
-            string myCapitalisedCow3 = "bow";
+            // -------------------------------------
+            // EXERCISE (Loops)
 
-            if ( myCow3 == myCapitalisedCow3)
-            {
-                Console.WriteLine("equal");
-            }
-            else if (myCow3 == myCapitalisedCow3.ToLower())
-            {
-                Console.WriteLine("Equal without case sensitivity");
-            }   
+            // use a foreach loop to 
+            // print every even number 
+            // in myNumberList to the console.
+            // -------------------------------------
 
-            Console.WriteLine("---");
+            Console.WriteLine("--LOOPS EXERCISE--");
 
-            // IF (True) ELSE IF (alternative condition TRUE) ELSE (otherwise) STATEMENT
-            // Run IF when true, when false: run ELSE IF when true, when false: run ELSE
-
-            string myCow4 = "cow";
-            string myCapitalisedCow4 = "banana";
-
-            if ( myCow4 == myCapitalisedCow4)
-            {
-                Console.WriteLine("equal");
-            }
-            else if (myCow4 == myCapitalisedCow4.ToLower())
-            {
-                Console.WriteLine("Equal without case sensitivity");
-            }   
-            else
-            {
-                Console.WriteLine("not equal");
-            }   
-
-            Console.WriteLine("---");
-
-            // ----------------------------------
-            // Switch Statements
-            // (alternative to If, Else If, Else)
-            // ----------------------------------
-
-            // similar to If - Else if - Else
-            // cleaner
-            // good for when comparing to the same thing
-            // can ONLY compare to CONSTANT values
-            // eg: compare a given variable to a constant
-            //     given variable = myCow
-            //     comparison variable = myCapitalisedCow <-- CANNOT USE
-            //     Instead: define a permanent value (eg "Cow" instead of variable)
-            
-            string myCow5 = "Pie";
-
-            switch (myCow5)
-            {
-                // when myCow == "cow"
-                // same as IF
-                case "cow":
-                    Console.WriteLine("Lowercase");
-                    break; // exit switch if true
-                // when myCow == "Cow"
-                // same as ELSE IF
-                case "Cow":
-                    Console.WriteLine("Uppercase");
-                    break; // exit switch if true
-                // when above cases are not true, run default
-                // same as ELSE
-                default:
-                    Console.WriteLine("Default Ran");
-                    break; // exit switch
+            List<int> myNumberList = new List<int>(){
+                2, 3, 5, 6, 7, 9, 10, 123, 324, 54
             };
-
-            Console.WriteLine("---");
-
+            //Write Your Code Here
+            
+            foreach(int number in myNumberList)
+            {
+                if (number % 2 == 0)
+                {
+                    Console.WriteLine(number);
+                };
+            };
         }
     }
 }
-
-
-
-
-
-
 
 
 // Template
@@ -634,13 +813,12 @@ _______________________________________________________*/
 // namespace HelloWorld
 // {
 //     internal class Program
-//     {
-            // Console.WriteLine("TITLE OF SECTION");    
+//     { 
 //         // method: something a class can do
 //         // Main runs by default
 //         static void Main(string[] args)
 //         {
- 
+//              Console.WriteLine("TITLE OF SECTION");   
 //             // ----------------------
 //             // THING
 //             // ----------------------
