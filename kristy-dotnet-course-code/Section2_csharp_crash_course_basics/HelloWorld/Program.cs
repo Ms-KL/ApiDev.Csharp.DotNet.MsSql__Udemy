@@ -621,184 +621,208 @@ _______________________________________________________*/
     Loops
 _______________________________________________________*/
 
+// using System;
+// using System.Data;
+
+// namespace HelloWorld
+// {
+//     internal class Program
+//     {    
+//         // method: something a class can do
+//         // Main runs by default
+//         static void Main(string[] args)
+//         {
+//             Console.WriteLine("LOOPS");
+
+//             // ----------------------
+//             // For Loop
+//             // ----------------------
+
+//             int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35};
+
+//             DateTime startTime = DateTime.Now;
+
+//             int totalValue = intsToCompress[0] + intsToCompress[1]
+//                 + intsToCompress[2] + intsToCompress[3] 
+//                 + intsToCompress[4] + intsToCompress[5]
+//                 + intsToCompress[6];
+
+//             // Measure how long it takes to perform calculation
+//             Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+
+//             Console.WriteLine(totalValue);
+
+//             // for loop
+//             // Instead of manually adding as above, use a for loop
+//             // for (starting index variable value, run while condition is true, increment for index per loop)
+
+//             totalValue = 0;
+
+
+//             Console.WriteLine("--For Loop--");
+//             for (int i = 0; i < intsToCompress.Length; i++)
+//             {
+//                 totalValue += intsToCompress[i];
+//                 Console.WriteLine(totalValue);
+//             }
+
+//             // Measure how long it takes to perform calculation
+//             Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+
+//             Console.WriteLine(totalValue);
+
+//             // ----------------------
+//             // For Each Loop
+//             // ----------------------
+
+//             // for each loop
+//             // faster than for loop
+//             // keeps iteration in the bounds of the list/array
+
+//             Console.WriteLine("--For Each Loop--");
+
+//             totalValue = 0;
+
+//             foreach(int intForCompression in intsToCompress)
+//             {
+//                 totalValue += intForCompression;
+//                 // for each loop, add the value of the current item in the array (intForCompression) to the totalValue
+//             }
+
+//             // Measure how long it takes to perform calculation
+//             Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+//             Console.WriteLine(totalValue);
+
+
+//             // ----------------------
+//             // While Loop
+//             // ----------------------
+
+//             // need a condition to check to see if true in order to make loop run
+
+//             Console.WriteLine("--While Loop--");
+
+//             totalValue = 0;
+
+//             int index = 0;
+
+//             while(index < intsToCompress.Length)
+//             {
+//                 totalValue += intsToCompress[index];
+//                 index++;
+//             }
+
+//             // Measure how long it takes to perform calculation
+//             Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+//             Console.WriteLine(totalValue);
+
+//             // ----------------------
+//             // Do While Loop
+//             // ----------------------
+
+//             // run code at least once and then until condition is true
+
+//             Console.WriteLine("--Do While Loop--");
+
+//             totalValue = 0;
+
+//             index = 0;
+
+//             do
+//             {
+//                 totalValue += intsToCompress[index];
+//                 //Console.WriteLine(index);
+//                 //Console.WriteLine(index < intsToCompress.Length);
+//                 index++;
+
+//             }while(index < intsToCompress.Length);
+
+//             // Measure how long it takes to perform calculation
+//             Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+//             Console.WriteLine(totalValue);
+
+//             // ----------------------
+//             // .Sum()
+//             // ----------------------
+
+//             Console.WriteLine("--Sum--");
+
+//             totalValue = intsToCompress.Sum();
+//             // Measure how long it takes to perform calculation
+//             Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+//             Console.WriteLine(totalValue);
+
+
+//             // ----------------------
+//             // Conditional For Each
+//             // ----------------------
+
+//             Console.WriteLine("--Conditional For Each--");
+
+//             totalValue = 0;
+//             foreach(int intForCompression in intsToCompress)
+//             {
+//                 if (intForCompression > 20)
+//                 {
+//                     totalValue += intForCompression;
+//                     Console.WriteLine(intForCompression);
+//                 }
+//             }
+
+//             // Measure how long it takes to perform calculation
+//             Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+//             Console.WriteLine(totalValue);
+
+
+//             // -------------------------------------
+//             // EXERCISE (Loops)
+
+//             // use a foreach loop to 
+//             // print every even number 
+//             // in myNumberList to the console.
+//             // -------------------------------------
+
+//             Console.WriteLine("--LOOPS EXERCISE--");
+
+//             List<int> myNumberList = new List<int>(){
+//                 2, 3, 5, 6, 7, 9, 10, 123, 324, 54
+//             };
+//             //Write Your Code Here
+            
+//             foreach(int number in myNumberList)
+//             {
+//                 if (number % 2 == 0)
+//                 {
+//                     Console.WriteLine(number);
+//                 };
+//             };
+//         }
+//     }
+// }
+
+/* _____________________________________________________
+
+    Methods
+_______________________________________________________*/
+
 using System;
-using System.Data;
 
 namespace HelloWorld
 {
     internal class Program
-    {    
-        // method: something a class can do
-        // Main runs by default
+    { 
         static void Main(string[] args)
         {
-            Console.WriteLine("LOOPS");
+             Console.WriteLine("METHODS"); 
 
             // ----------------------
-            // For Loop
+            // THING
             // ----------------------
 
-            int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35};
-
-            DateTime startTime = DateTime.Now;
-
-            int totalValue = intsToCompress[0] + intsToCompress[1]
-                + intsToCompress[2] + intsToCompress[3] 
-                + intsToCompress[4] + intsToCompress[5]
-                + intsToCompress[6];
-
-            // Measure how long it takes to perform calculation
-            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
-
-            Console.WriteLine(totalValue);
-
-            // for loop
-            // Instead of manually adding as above, use a for loop
-            // for (starting index variable value, run while condition is true, increment for index per loop)
-
-            totalValue = 0;
-
-
-            Console.WriteLine("--For Loop--");
-            for (int i = 0; i < intsToCompress.Length; i++)
-            {
-                totalValue += intsToCompress[i];
-                Console.WriteLine(totalValue);
-            }
-
-            // Measure how long it takes to perform calculation
-            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
-
-            Console.WriteLine(totalValue);
-
-            // ----------------------
-            // For Each Loop
-            // ----------------------
-
-            // for each loop
-            // faster than for loop
-            // keeps iteration in the bounds of the list/array
-
-            Console.WriteLine("--For Each Loop--");
-
-            totalValue = 0;
-
-            foreach(int intForCompression in intsToCompress)
-            {
-                totalValue += intForCompression;
-                // for each loop, add the value of the current item in the array (intForCompression) to the totalValue
-            }
-
-            // Measure how long it takes to perform calculation
-            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
-            Console.WriteLine(totalValue);
-
-
-            // ----------------------
-            // While Loop
-            // ----------------------
-
-            // need a condition to check to see if true in order to make loop run
-
-            Console.WriteLine("--While Loop--");
-
-            totalValue = 0;
-
-            int index = 0;
-
-            while(index < intsToCompress.Length)
-            {
-                totalValue += intsToCompress[index];
-                index++;
-            }
-
-            // Measure how long it takes to perform calculation
-            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
-            Console.WriteLine(totalValue);
-
-            // ----------------------
-            // Do While Loop
-            // ----------------------
-
-            // run code at least once and then until condition is true
-
-            Console.WriteLine("--Do While Loop--");
-
-            totalValue = 0;
-
-            index = 0;
-
-            do
-            {
-                totalValue += intsToCompress[index];
-                //Console.WriteLine(index);
-                //Console.WriteLine(index < intsToCompress.Length);
-                index++;
-
-            }while(index < intsToCompress.Length);
-
-            // Measure how long it takes to perform calculation
-            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
-            Console.WriteLine(totalValue);
-
-            // ----------------------
-            // .Sum()
-            // ----------------------
-
-            Console.WriteLine("--Sum--");
-
-            totalValue = intsToCompress.Sum();
-            // Measure how long it takes to perform calculation
-            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
-            Console.WriteLine(totalValue);
-
-
-            // ----------------------
-            // Conditional For Each
-            // ----------------------
-
-            Console.WriteLine("--Conditional For Each--");
-
-            totalValue = 0;
-            foreach(int intForCompression in intsToCompress)
-            {
-                if (intForCompression > 20)
-                {
-                    totalValue += intForCompression;
-                    Console.WriteLine(intForCompression);
-                }
-            }
-
-            // Measure how long it takes to perform calculation
-            Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
-            Console.WriteLine(totalValue);
-
-
-            // -------------------------------------
-            // EXERCISE (Loops)
-
-            // use a foreach loop to 
-            // print every even number 
-            // in myNumberList to the console.
-            // -------------------------------------
-
-            Console.WriteLine("--LOOPS EXERCISE--");
-
-            List<int> myNumberList = new List<int>(){
-                2, 3, 5, 6, 7, 9, 10, 123, 324, 54
-            };
-            //Write Your Code Here
-            
-            foreach(int number in myNumberList)
-            {
-                if (number % 2 == 0)
-                {
-                    Console.WriteLine(number);
-                };
-            };
         }
     }
 }
+
 
 
 // Template
