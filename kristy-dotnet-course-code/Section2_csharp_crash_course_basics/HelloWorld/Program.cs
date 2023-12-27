@@ -819,24 +819,51 @@ namespace HelloWorld
             // METHOD
             // ----------------------
 
-            int[] intsToCompress2 = new int[] {10, 15, 20, 25, 30, 12, 35};    
+            // int[] intsToCompress2 = new int[] {10, 15, 20, 25, 30, 12, 35};    
 
-            int totalValue = GetSum(intsToCompress2);
+            // int totalValue = GetSum(intsToCompress2);
 
-            Console.WriteLine(totalValue);
+            // Console.WriteLine(totalValue);
 
-            static int GetSum(int[] intsToCompress)
+            // static int GetSum(int[] intsToCompress)
+            // {
+
+            //     int totalValue = 0;
+
+            //     foreach(int intForCompression in intsToCompress)
+            //     {
+            //         totalValue += intForCompression;
+            //         Console.WriteLine(totalValue);
+            //     }
+            //     return totalValue;
+            // } 
+
+            
+            // -------------------------------------
+            // EXERCISE (Methods)
+
+            // Write a new method inside of the Exercise class called "`PrintIfOdd`".
+            // The new `PrintIfOdd` method should accept a single `int` as an argument
+            // The method should check `if` the argument is odd, and run Console.
+            // `WriteLine()` to print the number to the console if it is odd.
+            // -------------------------------------
+
+            List<int> myNumberList = new List<int>(){
+                2, 3, 5, 6, 7, 9, 10, 123, 324, 54
+            };
+            
+            foreach (int number in myNumberList)
             {
+                PrintIfOdd(number);
+            }
 
-                int totalValue = 0;
-
-                foreach(int intForCompression in intsToCompress)
+            static void PrintIfOdd(int number)
+            {         
+                if (number % 2 == 1)
                 {
-                    totalValue += intForCompression;
-                    Console.WriteLine(totalValue);
+                    Console.WriteLine(number);
                 }
-                return totalValue;
-            } 
+            }            
 
         }
     }
