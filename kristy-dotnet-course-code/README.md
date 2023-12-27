@@ -15,6 +15,6 @@ This repo contains Kristy's code and learning notes from exercises and projects 
 
 ## Kristy's Notes, Exercises & Projects related to course:
 
-* [Kristy's Error Log & Resolutions](ErrorResolution.md)
-* [Section 2: C# Crash Course - Basics](/kristy-dotnet-course-code/Section2_csharp_crash_course_basics/)
-* Section 3: TBA
+* [Kristy's Error Log & Resolutions](/ErrorResolution.md)
+* [Section 2: C# Crash Course - Basics](/Section2_csharp_crash_course_basics/)
+* [Section 3: C# Crash Course - Intermediate](/Section3_csharp_crash_course_intermediate/)

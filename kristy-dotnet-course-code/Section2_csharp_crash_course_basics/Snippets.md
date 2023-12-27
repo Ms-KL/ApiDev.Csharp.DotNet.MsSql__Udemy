@@ -58,6 +58,8 @@ Kristy's [HelloWorld Program.cs](./HelloWorld/Program.cs) file
 | Create new template | `dotnet new <TemplateType>` | console, webapi, gitignore |
 | Name: <br> App, NameSpace, Directory | `-n <App Name>` <br> `--name <App Name>` |
 | Create new console app with name | `dotnet new console -n ProjectName` | 
+| Create a new file (not in powershell) | `echo. > <filename.text>` |
+| Create a new file (in powershell) | `New-Item -ItemType File -Name <filename.text>` |
 | Specify Output Directory: | `-o <Output Directory>` <br> `--output <Output Directory>` | |
 | Specify Language | `-lang "<Language>"` <br>`--language "<language>"` | Visual Basic, C#, F# |
 | Open Current Working Directory in VS Code | `code .` |
