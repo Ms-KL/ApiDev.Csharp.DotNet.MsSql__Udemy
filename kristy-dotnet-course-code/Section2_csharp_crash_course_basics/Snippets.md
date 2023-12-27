@@ -2,6 +2,8 @@
 
 ## Section 2: C# Crash Course - Basics
 
+Kristy's [HelloWorld Program.cs](./HelloWorld/Program.cs) file
+
 ### Contents:
 
 
@@ -36,6 +38,11 @@
 **CONDITIONAL STATEMENTS:**
 * [If, Else If, Else](#conditional-statements-if-else-if-else)
 * [Switch](#conditional-statements-switch)
+
+**LOOPS, METHODS & SCOPE:**
+* [For, For Each, While, Do While](#loops)
+* [Methods, Arguments, Return ](#methods-arguments-return)
+* [Scope](#scope)
 
 <br>
 
@@ -952,7 +959,7 @@ Result:
         string myCow4 = "cow";
         string myCapitalisedCow4 = "banana";
 
-        if ( myCow4 == myCapitalisedCow4)
+        if (myCow4 == myCapitalisedCow4)
         {
             Console.WriteLine("equal");
         }
@@ -1265,6 +1272,7 @@ Result:
 ### **Methods, Arguments, Return**
 
 * gives ability to break up / refactor code
+* `A named member of a class that executes a code block`
 * access in multiple files & reuse logic (generalisable)
 * pass values to a method (the values are called arguments)
 * return values and pass between methods
@@ -1349,23 +1357,18 @@ Result:
                     {
                         Console.WriteLine(number);
                     }
-                }
-            
-
-                
-                //Expected output:
-                //3
-                //5
-                //7
-                //9
-                //123
-                
+                }                
             }
         }
 
-    
     ```
+    Result:
 
+        3
+        5
+        7
+        9
+        123
 
 <br>
 
@@ -1375,13 +1378,88 @@ Result:
 ### **Scope**
 
 * decide where duplicate variable names can be used in different contexts, in the same program
+* declare variables inside class, but outside of method and the variables will inherit into the methods (children)
+    * if this is the case, use PascalCase
+* Variables within methods declared with camelCase
+* Static methods require static variable declarations when made outside of method
+* Parent variables passed in as an argument to a method will be overwritten with identical named local variables
 * 
-* thing
     ```csharp
-        <insert>
-    ```
-    Result:
 
-        Thing              
+        using System;
+
+        namespace HelloWorld
+        {
+            internal class Program
+            { 
+                // declare and initialise variables:
+                // PascalCase outside of methods, camelCase inside of methods
+
+                int AccessibleIntNotStatic = 7; // accessible within method - unless it's static
+
+                static int AccessibleIntStatic = 7; // now accessible within method
+
+                void TestMethod()
+                {
+                    Console.WriteLine("SCOPE");    
+                    
+                    Console.WriteLine("TestMethod:"); 
+                    Console.WriteLine(AccessibleIntNotStatic);
+                    Console.WriteLine(AccessibleIntStatic);
+                }
+
+                void TestMethod2()
+                {
+                    Console.WriteLine("TestMethod2:"); 
+                    Console.WriteLine(AccessibleIntStatic); 
+                    // ERROR - overrides existing variable accessibleIntStatic that is declared outside of TestMethod2 with new value of 5
+                    // this makes the argument of Console.WriteLine(accessibleIntStatic) not declared yet
+                    int AccessibleIntStatic = 5; // Creates new variable inside method
+                    Console.WriteLine(AccessibleIntStatic);
+                }
+
+                // SOLUTION to same variable override issue:
+                void TestMethod3()
+                {
+                    Console.WriteLine("TestMethod3:");                     
+                    Console.WriteLine(AccessibleIntStatic); 
+
+                    // Declare new names for variable
+                    int accessibleIntStaticInMethod = 5;
+                    Console.WriteLine(accessibleIntStaticInMethod);
+                }
+                
+                static void Main(string[] args)
+                {
+                    Console.WriteLine("Main Method Run:");
+                    Console.WriteLine(AccessibleIntStatic);
+                    // Console.WriteLine(AccessibleIntNotStatic); // ERROR due to not-static 
+                    
+                    // Create an Instance of the Class (Program):
+                    Program program = new Program();
+                    
+                    // run methods
+                    program.TestMethod();
+                    program.TestMethod2();
+                    program.TestMethod3();
+                }
+            }
+        }
+    ``` 
+    Result:
+        Main Method Run:
+        7
+        SCOPE
+        TestMethod:
+        7
+        7
+        TestMethod2:
+        5
+        TestMethod3:
+        7
+        5
 
 #### **End**
+
+*Back to [contents](#contents)*<br>
+*Next Unit: [Section 3: CSharp Crash Course Intermediate](#)*

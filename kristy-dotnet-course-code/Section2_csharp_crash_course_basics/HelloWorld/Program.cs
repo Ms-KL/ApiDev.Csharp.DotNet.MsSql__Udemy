@@ -805,67 +805,131 @@ _______________________________________________________*/
     Method, Scope
 _______________________________________________________*/
 
+// using System;
+
+// namespace HelloWorld
+// {
+//     internal class Program
+//     { 
+//         static void Main(string[] args)
+//         {
+//             // Console.WriteLine("METHODS"); 
+
+//             // ----------------------
+//             // METHOD
+//             // ----------------------
+
+//             // int[] intsToCompress2 = new int[] {10, 15, 20, 25, 30, 12, 35};    
+
+//             // int totalValue = GetSum(intsToCompress2);
+
+//             // Console.WriteLine(totalValue);
+
+//             // static int GetSum(int[] intsToCompress)
+//             // {
+
+//             //     int totalValue = 0;
+
+//             //     foreach(int intForCompression in intsToCompress)
+//             //     {
+//             //         totalValue += intForCompression;
+//             //         Console.WriteLine(totalValue);
+//             //     }
+//             //     return totalValue;
+//             // } 
+
+
+//             // -------------------------------------
+//             // EXERCISE (Methods)
+
+//             // Write a new method inside of the Exercise class called "`PrintIfOdd`".
+//             // The new `PrintIfOdd` method should accept a single `int` as an argument
+//             // The method should check `if` the argument is odd, and run Console.
+//             // `WriteLine()` to print the number to the console if it is odd.
+//             // -------------------------------------
+
+//             // List<int> myNumberList = new List<int>(){
+//             //     2, 3, 5, 6, 7, 9, 10, 123, 324, 54
+//             // };
+            
+//             // foreach (int number in myNumberList)
+//             // {
+//             //     PrintIfOdd(number);
+//             // }
+
+//             // static void PrintIfOdd(int number)
+//             // {         
+//             //     if (number % 2 == 1)
+//             //     {
+//             //         Console.WriteLine(number);
+//             //     }
+//             // }  
+//         }
+//     }
+// }
+
+
+// ----------------------
+// SCOPE
+// ----------------------
+
 using System;
 
 namespace HelloWorld
 {
     internal class Program
     { 
+        // declare and initialise variables:
+        // PascalCase outside of methods, camelCase inside of methods
+        int AccessibleIntNotStatic = 7; // accessible within method - unless it's static
+        static int AccessibleIntStatic = 7; // now accessible within method
+
+        void TestMethod()
+        {
+
+            Console.WriteLine("SCOPE");  
+
+            Console.WriteLine("TestMethod:"); 
+            Console.WriteLine(AccessibleIntNotStatic);
+            Console.WriteLine(AccessibleIntStatic);
+        }
+        
+
+        void TestMethod2()
+        {
+            Console.WriteLine("TestMethod2:"); 
+            //Console.WriteLine(AccessibleIntStatic); 
+            // ERROR - overrides existing variable accessibleIntStatic that is declared outside of TestMethod2 with NEW variable with the same name
+            // this makes the argument of Console.WriteLine(accessibleIntStatic) not declared yet
+
+            int AccessibleIntStatic = 5; // Creates new variable inside method
+            Console.WriteLine(AccessibleIntStatic);
+        }
+
+        // SOLUTION to same variable override issue:
+        void TestMethod3()
+        {
+            Console.WriteLine("TestMethod3:"); 
+            Console.WriteLine(AccessibleIntStatic); 
+
+            // Declare new names for variable
+            int accessibleIntStaticInMethod = 5;
+            Console.WriteLine(accessibleIntStaticInMethod);
+        }
         static void Main(string[] args)
         {
-             Console.WriteLine("METHODS"); 
-
-            // ----------------------
-            // METHOD
-            // ----------------------
-
-            // int[] intsToCompress2 = new int[] {10, 15, 20, 25, 30, 12, 35};    
-
-            // int totalValue = GetSum(intsToCompress2);
-
-            // Console.WriteLine(totalValue);
-
-            // static int GetSum(int[] intsToCompress)
-            // {
-
-            //     int totalValue = 0;
-
-            //     foreach(int intForCompression in intsToCompress)
-            //     {
-            //         totalValue += intForCompression;
-            //         Console.WriteLine(totalValue);
-            //     }
-            //     return totalValue;
-            // } 
-
+            Console.WriteLine("Main Method Run:");
+            Console.WriteLine(AccessibleIntStatic);
+            // Console.WriteLine(AccessibleIntNotStatic); // ERROR due to not-static 
             
-            // -------------------------------------
-            // EXERCISE (Methods)
-
-            // Write a new method inside of the Exercise class called "`PrintIfOdd`".
-            // The new `PrintIfOdd` method should accept a single `int` as an argument
-            // The method should check `if` the argument is odd, and run Console.
-            // `WriteLine()` to print the number to the console if it is odd.
-            // -------------------------------------
-
-            List<int> myNumberList = new List<int>(){
-                2, 3, 5, 6, 7, 9, 10, 123, 324, 54
-            };
+            // Create an Instance of the Class (Program):
+            Program program = new Program();
             
-            foreach (int number in myNumberList)
-            {
-                PrintIfOdd(number);
-            }
-
-            static void PrintIfOdd(int number)
-            {         
-                if (number % 2 == 1)
-                {
-                    Console.WriteLine(number);
-                }
-            }            
-
-        }
+            // run methods
+            program.TestMethod();
+            program.TestMethod2();
+            program.TestMethod3();
+        }  
     }
 }
 
