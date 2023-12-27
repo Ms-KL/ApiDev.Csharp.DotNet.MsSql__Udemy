@@ -1023,20 +1023,34 @@ Result:
 
 * manual way of using items in a list/array 
     ```csharp
-        int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35};   
-        DateTime startTime = DateTime.Now;
+        using System;
+        using System.Data;
 
-        int totalValue = intsToCompress[0] + intsToCompress[1]
-            + intsToCompress[2] + intsToCompress[3] 
-            + intsToCompress[4] + intsToCompress[5]
-            + intsToCompress[6];
+        namespace HelloWorld
+        {
+            internal class Program
+            {    
+                // method: something a class can do
+                // Main runs by default
+                static void Main(string[] args)
+                {
+                    int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35};   
+                    DateTime startTime = DateTime.Now;
 
-        // Measure how long it takes to perform calculation
-        Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
-        
-        Console.WriteLine(totalValue);
+                    int totalValue = intsToCompress[0] + intsToCompress[1]
+                        + intsToCompress[2] + intsToCompress[3] 
+                        + intsToCompress[4] + intsToCompress[5]
+                        + intsToCompress[6];
+
+                    // Measure how long it takes to perform calculation
+                    Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+                    
+                    Console.WriteLine(totalValue);
+                }
+            }
+        }
     ```
-    Result:
+* Result:
 
         0.0028033
         147
@@ -1044,30 +1058,44 @@ Result:
 * **`for`** = set number of times it will run
     * `for(type i = value; condition, increment){actionblock} `
     ```csharp
-        // Instead of manually adding as above, use a for loop
-        // for 
-        // (
-            // starting index variable value, 
-            // run while condition is true, 
-            // increment for index per loop
-        // )
+        using System;
+        using System.Data;
 
-        int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35};   
-        int totalValue = 0;
-        DateTime startTime = DateTime.Now;
-
-        for (int i = 0; i < intsToCompress.Length; i++)
+        namespace HelloWorld
         {
-            totalValue += intsToCompress[i];
-            Console.WriteLine(totalValue);
+            internal class Program
+            {    
+                // method: something a class can do
+                // Main runs by default
+                static void Main(string[] args)
+                {
+                    // Instead of manually adding as above, use a for loop
+                    // for 
+                    // (
+                        // starting index variable value, 
+                        // run while condition is true, 
+                        // increment for index per loop
+                    // )
+
+                    int[] intsToCompress = new int[] {10, 15, 20, 25, 30, 12, 35};   
+                    int totalValue = 0;
+                    DateTime startTime = DateTime.Now;
+
+                    for (int i = 0; i < intsToCompress.Length; i++)
+                    {
+                        totalValue += intsToCompress[i];
+                        Console.WriteLine(totalValue);
+                    }
+
+                    // Measure how long it takes to perform calculation
+                    Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
+
+                    Console.WriteLine(totalValue);
+                }
+            }
         }
-
-        // Measure how long it takes to perform calculation
-        Console.WriteLine((DateTime.Now - startTime).TotalSeconds);
-
-        Console.WriteLine(totalValue);
     ```
-    Result:
+* Result:
 
         10
         25
@@ -1228,6 +1256,7 @@ Result:
         35
         0.0246121
         90
+
 <br>
 
 *Back to [contents](#contents)*
@@ -1239,13 +1268,104 @@ Result:
 * access in multiple files & reuse logic (generalisable)
 * pass values to a method (the values are called arguments)
 * return values and pass between methods
-* thing
+* Method with an array of integers argument
     ```csharp
-        <insert>
+    using System;
+
+    namespace HelloWorld
+    {
+        internal class Program
+        { 
+            static void Main(string[] args)
+            {
+                // Create a method and call it by passing in an argument (keep it dynamic)
+
+                int[] intsToCompress2 = new int[] {10, 15, 20, 25, 30, 12, 35};    
+
+                int totalValue = GetSum(intsToCompress2);
+
+                Console.WriteLine(totalValue);
+
+                static int GetSum(int[] intsToCompress)
+                // private?
+                {
+
+                    int totalValue = 0;
+
+                    foreach(int intForCompression in intsToCompress)
+                    {
+                        totalValue += intForCompression;
+                        Console.WriteLine(totalValue);
+                    }
+
+                    return totalValue;
+                } 
+            }
+        }
+    }
     ```
     Result:
 
-        Thing   
+        10
+        25
+        45
+        70
+        100
+        112
+        147
+        147
+
+* Method Exercise: 
+    * Write a new method inside of the Exercise class called "`PrintIfOdd`".
+    * The new `PrintIfOdd` method should accept a single `int` as an argument
+    * The method should check `if` the argument is odd, and run Console.`WriteLine()` to print the number to the console if it is odd.
+    * Solution:
+    ```csharp
+
+        using System;
+        using System.Collections.Generic;
+
+        namespace Coding.Exercise
+        {
+            public class Exercise
+            {
+                public void RunExercise()
+                {
+                    List<int> myNumberList = new List<int>(){
+                        2, 3, 5, 6, 7, 9, 10, 123, 324, 54
+                    };
+                    
+                    foreach (int number in myNumberList)
+                    {
+                        PrintIfOdd(number);
+                    }
+                    
+                }
+                //Write Your Code Here
+                public void PrintIfOdd(int number)
+                {
+                    
+                    if (number % 2 == 1)
+                    {
+                        Console.WriteLine(number);
+                    }
+                }
+            
+
+                
+                //Expected output:
+                //3
+                //5
+                //7
+                //9
+                //123
+                
+            }
+        }
+
+    
+    ```
+
 
 <br>
 

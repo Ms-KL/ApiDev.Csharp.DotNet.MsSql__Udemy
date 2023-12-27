@@ -802,7 +802,7 @@ _______________________________________________________*/
 
 /* _____________________________________________________
 
-    Methods
+    Method, Scope
 _______________________________________________________*/
 
 using System;
@@ -816,8 +816,27 @@ namespace HelloWorld
              Console.WriteLine("METHODS"); 
 
             // ----------------------
-            // THING
+            // METHOD
             // ----------------------
+
+            int[] intsToCompress2 = new int[] {10, 15, 20, 25, 30, 12, 35};    
+
+            int totalValue = GetSum(intsToCompress2);
+
+            Console.WriteLine(totalValue);
+
+            static int GetSum(int[] intsToCompress)
+            {
+
+                int totalValue = 0;
+
+                foreach(int intForCompression in intsToCompress)
+                {
+                    totalValue += intForCompression;
+                    Console.WriteLine(totalValue);
+                }
+                return totalValue;
+            } 
 
         }
     }
