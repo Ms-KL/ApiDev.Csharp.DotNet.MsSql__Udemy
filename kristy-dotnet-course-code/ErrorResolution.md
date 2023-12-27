@@ -10,3 +10,6 @@
     * deselect the FintechAdapters Package in Nuget Package Manager
 * **Udemy Nuget Troubleshooting**
     * See: https://www.udemy.com/course/net-core-with-ms-sql-beginner-to-expert/learn/lecture/39280658#overview
+
+---
+
