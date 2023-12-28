@@ -62,40 +62,73 @@ namespace HelloWorld
     //         get { return _motherboard; } 
     //         set { _motherboard = value; }
     //         } 
-
     // }
+
+    // // -----------------------------------------------------
+    // // PUBLIC MODEL + PRIVATE FIELD + PROPERTIES 
+    // // + RETURN VALUES FROM PROPERTIES + SHORTCUT -  BEST PRACTISE
+    // // ----------------------------------------------------- 
+    // // Create a Model Class
+    // // accessible outside of class
+    // // Make fields private
+    // // set & get properties for field
+    // // return values using shortcut alternative  
+    // // inherently creates the private field:
+    // // private string _motherboard;
+    // // uses GET & SET to manipulate _motherboard
 
     // public class ComputerPublicModelWithPublicClassPrivateFieldsAndPropertiesWithReturnShortcut
     // {
-    //     // Create a Model Class - accessible outside of class - and Make fields private - and set properties for field - and return values from properties --> BEST PRACTISE SHORTCUT
     //     private string Motherboard {get; set;}
-
-    //     // inherently creates the private field:
-    //         // private string _motherboard;
-    //     // uses GET & SET to manipulate _motherboard
-
     // }
 
+    // // -----------------------------------------------------
+    // // PUBLIC MODEL + PRIVATE FIELD + PROPERTIES 
+    // // + RETURN VALUES FROM PROPERTIES + SHORTCUT + NON NULLABLE 
+    // // -  ISSUES WITH STRING
+    // // ----------------------------------------------------- 
+    // // Create a Model Class
+    // // accessible outside of class
+    // // Make fields private
+    // // set & get properties for field
+    // // return values using shortcut alternative  
+    // // inherently creates the private field:
+    // // private string _motherboard;
+    // // uses GET & SET to manipulate _motherboard
+    // // Not public field (removing ;)
+    // // strings are not nullable -> create issues when instance is created
 
     // public class ComputerWithNonNullableString
     // {
-    //     // Not public field (removing ;)
-    //     // strings are not nullable -> create issues when instance is created
-    //     private string Motherboard { get; set; }
+    //     private string Motherboard { get; set; } // NON NULLABLE ISSUE
     //     public int CPU Cores { get; set; }
     //     public bool HasWifi { get; set; }
     //     public bool HasLTE { get; set; }
     //     public DateTime ReleaseDate { get; set; }
     //     public decimal Price { get; set; }
-    //     private string VideoCard { get; set; }
+    //     private string VideoCard { get; set; } // NON NULLABLE ISSUE
     // }
     
+    // // -----------------------------------------------------
+    // // PUBLIC MODEL + PRIVATE FIELD + PROPERTIES 
+    // // + RETURN VALUES FROM PROPERTIES + SHORTCUT + NULLABLE 
+    // // -  STRING FIX - NOT RECOMMENDED
+    // // ----------------------------------------------------- 
+    // // Create a Model Class
+    // // accessible outside of class
+    // // Make fields private
+    // // set & get properties for field
+    // // return values using shortcut alternative  
+    // // inherently creates the private field:
+    // // private string _motherboard;
+    // // uses GET & SET to manipulate _motherboard
+    // // Not public field (removing ;)
+    // // strings are not nullable -> create issues when instance is created
+    // // string? NOT best practise -> use constructor instead
+
     // public class ComputerWithNullableString
     // {
-    //     // Not public field (removing ;)
-
-    //     private string? Motherboard { get; set; }
-    //     // ? NOT best practise -> use constructor instead
+    //     private string? Motherboard { get; set; } // not recommended
     //     public int CPUCores { get; set; }
     //     public bool HasWifi { get; set; }
     //     public bool HasLTE { get; set; }
@@ -112,9 +145,27 @@ namespace HelloWorld
     //         }
     //     }
     // }
+
+    // // -----------------------------------------------------
+    // // PUBLIC MODEL + PRIVATE FIELD + PROPERTIES 
+    // // + RETURN VALUES FROM PROPERTIES + SHORTCUT + NULLABLE 
+    // // + CONSTRUCTOR + PRIVATE ISSUE -- NOT RECOMMENDED
+    // // ----------------------------------------------------- 
+    // // Create a Model Class
+    // // accessible outside of class
+    // // Make fields private
+    // // set & get properties for field
+    // // return values using shortcut alternative  
+    // // inherently creates the private field:
+    // // private string _motherboard;
+    // // uses GET & SET to manipulate _motherboard
+    // // Not public field (removing ;)
+    // // strings are not nullable -> create issues when instance is created
+    // // constructor used -> variable needs to be public 
+
     // public class ComputerWithNotPublicAttribute
     // {
-    //     private string Motherboard { get; set; }
+    //     private string Motherboard { get; set; } // ERROR: constructor cannot access private data
     //     public int CPUCores { get; set; }
     //     public bool HasWifi { get; set; }
     //     public bool HasLTE { get; set; }
@@ -123,14 +174,13 @@ namespace HelloWorld
     //     private string VideoCard { get; set; }
 
     //     // Constructor --> needs to be public so when instance is created, constructor can be accessed
-    //     ComputerWithNotPublicAttribute()
+    //     ComputerWithNotPublicAttribute() // need to make public
     //     {
     //         // ERROR: cannot access private data
     //         if (Motherboard == null)
     //         {
     //             Motherboard = "";
     //         }
-
     //         if (VideoCard == null)
     //         {
     //             VideoCard = "";
@@ -144,16 +194,16 @@ namespace HelloWorld
     // --------------------------
     public class Computer
     {
-        public string Motherboard { get; set; }
+        public string Motherboard { get; set; } // accessible in constructor
         public int CPUCores { get; set; }
         public bool HasWifi { get; set; }
         public bool HasLTE { get; set; }
         public DateTime ReleaseDate { get; set; }
         public decimal Price { get; set; }
-        public string VideoCard { get; set; }
+        public string VideoCard { get; set; } // accessible in constructor
 
         // Constructor
-        public Computer()
+        public Computer() // can access Motheboard & VideoCard
         {
             if (Motherboard == null)
             {
@@ -183,14 +233,13 @@ namespace HelloWorld
             };
 
             Console.WriteLine(myComputer.HasWifi);
+
             // change values
             myComputer.HasWifi = false;
 
             Console.WriteLine(myComputer.Motherboard);
             Console.WriteLine(myComputer.HasWifi);
             Console.WriteLine(myComputer.VideoCard);
-
-            
 
         }
     }
