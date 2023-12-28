@@ -3,10 +3,10 @@
     Models
 _______________________________________________________*/
 
-using System;
+// using System;
 
-namespace HelloWorld
-{
+// namespace HelloWorld
+// {
     // // -----------------------------------------------------
     // // PUBLIC MODEL CLASS - WRONG
     // // -----------------------------------------------------
@@ -245,19 +245,66 @@ namespace HelloWorld
 //     }
 // }
 
-    // --------------------------
-    // FINAL MODEL using default
-    // --------------------------
-    public class Computer
-    {
-        public string Motherboard { get; set; } = "";
-        public int CPUCores { get; set; }
-        public bool HasWifi { get; set; }
-        public bool HasLTE { get; set; }
-        public DateTime ReleaseDate { get; set; }
-        public decimal Price { get; set; }
-        public string VideoCard { get; set; } = "";
-    }
+//     // --------------------------
+//     // FINAL MODEL using default
+//     // --------------------------
+//     public class Computer
+//     {
+//         // private string _motherboard; // (creates automatically)
+//         public string Motherboard { get; set; } = "";
+//         public int CPUCores { get; set; }
+//         public bool HasWifi { get; set; }
+//         public bool HasLTE { get; set; }
+//         public DateTime ReleaseDate { get; set; }
+//         public decimal Price { get; set; }
+//         public string VideoCard { get; set; } = "";
+//     }
+
+//     internal class Program
+//     {
+//         static void Main(string[] args)
+//         {
+//             // create first instance of Computer model
+//             Computer myComputer = new Computer()
+//             {
+//                 Motherboard = "z39anvd923",
+//                 HasWifi = true,
+//                 HasLTE = false,
+//                 ReleaseDate = DateTime.Now,
+//                 Price = 943.87m,
+//                 VideoCard = "RTX 26"
+//             };
+
+//             Console.WriteLine(myComputer.HasWifi);
+
+//             // change values
+//             myComputer.HasWifi = false;
+
+//             Console.WriteLine(myComputer.Motherboard);
+//             Console.WriteLine(myComputer.HasWifi);
+//             Console.WriteLine(myComputer.VideoCard);
+
+//         }
+//     }
+// }
+
+/* _____________________________________________________
+
+    Namespaces
+_______________________________________________________*/
+
+// separates the models into its own file
+// access models within this file by importing
+
+using System;
+using System.Text.RegularExpressions;
+
+// import decoupledmodels
+using HelloWorld.Models;
+
+namespace HelloWorld
+{
+    // models moved to Models.Computer.cs
 
     internal class Program
     {
@@ -286,8 +333,3 @@ namespace HelloWorld
         }
     }
 }
-
-/* _____________________________________________________
-
-    Thing
-_______________________________________________________*/

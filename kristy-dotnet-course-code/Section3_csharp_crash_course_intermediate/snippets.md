@@ -74,73 +74,118 @@ namespace HelloWorld
     * Map to JSON to present back to users
 * Class in C# that will match the field names / property in database for a SQL query
 * for not-ideal models, see the [HelloWorld Program.cs](./HelloWorld/Program.cs)
-* Ideal model:
-```csharp
-using System;
+* Ideal model using constructor
+    ```csharp
+    using System;
 
-namespace HelloWorld
-{
-    public class Computer
+    namespace HelloWorld
     {
-        public string Motherboard { get; set; }
-        public int CPUCores { get; set; }
-        public bool HasWifi { get; set; }
-        public bool HasLTE { get; set; }
-        public DateTime ReleaseDate { get; set; }
-        public decimal Price { get; set; }
-        public string VideoCard { get; set; } 
-
-        // Constructor nullable
-        // public matching public variables = accessible
-        public Computer() // can access Motheboard & VideoCard
+        public class Computer
         {
-            if (Motherboard == null)
-            {
-                Motherboard = "";
-            }
+            public string Motherboard { get; set; }
+            public int CPUCores { get; set; }
+            public bool HasWifi { get; set; }
+            public bool HasLTE { get; set; }
+            public DateTime ReleaseDate { get; set; }
+            public decimal Price { get; set; }
+            public string VideoCard { get; set; } 
 
-            if (VideoCard == null)
+            // Constructor nullable
+            // public matching public variables = accessible
+            public Computer() // can access Motheboard & VideoCard
             {
-                VideoCard = "";
+                if (Motherboard == null)
+                {
+                    Motherboard = "";
+                }
+
+                if (VideoCard == null)
+                {
+                    VideoCard = "";
+                }
             }
         }
+
+        internal class Program
+        {
+            static void Main(string[] args)
+            {
+                // create first instance of Computer model
+                Computer myComputer = new Computer()
+                {
+                    Motherboard = "z39anvd923",
+                    HasWifi = true,
+                    HasLTE = false,
+                    ReleaseDate = DateTime.Now,
+                    Price = 943.87m,
+                    VideoCard = "RTX 26"
+                };
+
+                Console.WriteLine(myComputer.HasWifi);
+
+                // change values
+                myComputer.HasWifi = false;
+
+                Console.WriteLine(myComputer.Motherboard);
+                Console.WriteLine(myComputer.HasWifi);
+                Console.WriteLine(myComputer.VideoCard);
+
+            }
+        } 
+
     }
+    ```
+    Return:
 
-    internal class Program
+        True
+        z39anvd923
+        False
+        RTX 26
+
+* Ideal model using default instead of constructor
+    ```csharp
+    using System;
+
+    namespace HelloWorld
     {
-        static void Main(string[] args)
+        public class Computer
         {
-            // create first instance of Computer model
-            Computer myComputer = new Computer()
-            {
-                Motherboard = "z39anvd923",
-                HasWifi = true,
-                HasLTE = false,
-                ReleaseDate = DateTime.Now,
-                Price = 943.87m,
-                VideoCard = "RTX 26"
-            };
-
-            Console.WriteLine(myComputer.HasWifi);
-
-            // change values
-            myComputer.HasWifi = false;
-
-            Console.WriteLine(myComputer.Motherboard);
-            Console.WriteLine(myComputer.HasWifi);
-            Console.WriteLine(myComputer.VideoCard);
-
+            public string Motherboard { get; set; } = "";
+            public int CPUCores { get; set; }
+            public bool HasWifi { get; set; }
+            public bool HasLTE { get; set; }
+            public DateTime ReleaseDate { get; set; }
+            public decimal Price { get; set; }
+            public string VideoCard { get; set; } = "";
         }
-    } 
 
-}
-```
-Return:
+        internal class Program
+        {
+            static void Main(string[] args)
+            {
+                // create first instance of Computer model
+                Computer myComputer = new Computer()
+                {
+                    Motherboard = "z39anvd923",
+                    HasWifi = true,
+                    HasLTE = false,
+                    ReleaseDate = DateTime.Now,
+                    Price = 943.87m,
+                    VideoCard = "RTX 26"
+                };
 
-    True
-    z39anvd923
-    False
-    RTX 26
+                Console.WriteLine(myComputer.HasWifi);
+
+                // change values
+                myComputer.HasWifi = false;
+
+                Console.WriteLine(myComputer.Motherboard);
+                Console.WriteLine(myComputer.HasWifi);
+                Console.WriteLine(myComputer.VideoCard);
+
+            }
+        } 
+    }
 
 <br>
 
@@ -152,14 +197,78 @@ Return:
 
 * A way to organise code
 * Tells C# where the code lives (to be retrievable)
+* **EXAMPLE:** Decoupling model that was in the Program.cs file:
+    1. Create a folder in `HelloWorld` named `Models` = `mkdir Models`
+    2. Create a file in `Models` named `Computer`.cs = `New-Item -ItemType File -Name Computer.cs`
+    3. Extract Model code from `Program.cs` to `Computer.cs`:
+        * Program.cs:
+        ```csharp
+            using System;
+            using System.Text.RegularExpressions;
 
-```shell
-    stuff
-```
+            // import decoupledmodels
+            using HelloWorld.Models;
 
-```csharp
-    stuff
-```
+            namespace HelloWorld
+            {
+                // models moved to Models.Computer.cs
+                internal class Program
+                {
+                    static void Main(string[] args)
+                    {
+                        // create first instance of Computer model
+                        Computer myComputer = new Computer()
+                        {
+                            Motherboard = "z39anvd923",
+                            HasWifi = true,
+                            HasLTE = false,
+                            ReleaseDate = DateTime.Now,
+                            Price = 943.87m,
+                            VideoCard = "RTX 26"
+                        };
+
+                        Console.WriteLine(myComputer.HasWifi);
+                        // change values
+                        myComputer.HasWifi = false;
+                        Console.WriteLine(myComputer.Motherboard);
+                        Console.WriteLine(myComputer.HasWifi);
+                        Console.WriteLine(myComputer.VideoCard);
+                    }
+                }
+            }
+        ```
+        * Computer.cs:
+        ```csharp
+            namespace HelloWorld.Models{
+
+                public class Computer
+                {
+                    // private string _motherboard; (creates automatically)
+                    public string Motherboard { get; set; }
+                    public int CPUCores { get; set; }
+                    public bool HasWifi { get; set; }
+                    public bool HasLTE { get; set; }
+                    public DateTime ReleaseDate { get; set; }
+                    public decimal Price { get; set; }
+                    public string VideoCard { get; set; }
+
+                    // Constructor
+                    // can access Motherboard & VideoCard
+                    public Computer() 
+                    {
+                        if (Motherboard == null)
+                        {
+                            Motherboard = "";
+                        }
+                        if (VideoCard == null)
+                        {
+                            VideoCard = "";
+                        }
+                    }
+                }
+
+            }        
+        ```       
 Return:
     Thing
 
