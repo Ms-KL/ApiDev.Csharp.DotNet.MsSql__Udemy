@@ -6,19 +6,17 @@ Kristy's [HelloWorld Program.cs](./HelloWorld/Program.cs) file
 
 ### Contents:
 
-**X:**
+* [Setup Environment](#setup-environment)
+* [Change to Console Template](#change-to-console-template-old)
 * [Models](#models)
 * [Namespace](#namespaces)
 * [Database Connection](#database-connection)
 
-**X:**
-* [Thing](#)
-* [Thing](#)
-* [Thing](#)
-
 <br>
 
 [Skip to End](#end)
+
+---
 
 ### **Setup Environment**
 
@@ -37,6 +35,8 @@ Kristy's [HelloWorld Program.cs](./HelloWorld/Program.cs) file
     dotnet build
     dotnet run
 ```
+
+---
 
 ### **Change to Console Template (Old)**
 
@@ -147,11 +147,6 @@ Return:
 *Back to [contents](#contents)*
 
 ---
-<br>
-
-[Skip to End](#end)
-
----
 
 ### **Namespaces**
 
@@ -217,12 +212,15 @@ Return:
 ```csharp
     stuff
 ```
+
 Return:
     Thing
 
 <br>
 
 *Back to [contents](#contents)*
+
+---
 
 #### **End**
 
