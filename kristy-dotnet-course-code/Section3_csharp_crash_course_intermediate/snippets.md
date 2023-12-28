@@ -201,7 +201,7 @@ namespace HelloWorld
     1. Create a folder in `HelloWorld` named `Models` = `mkdir Models`
     2. Create a file in `Models` named `Computer`.cs = `New-Item -ItemType File -Name Computer.cs`
     3. Extract Model code from `Program.cs` to `Computer.cs`:
-        * Program.cs:
+        * `Program.cs`:
         ```csharp
             using System;
             using System.Text.RegularExpressions;
@@ -237,7 +237,7 @@ namespace HelloWorld
                 }
             }
         ```
-        * Computer.cs:
+        * `Computer.cs`:
         ```csharp
             namespace HelloWorld.Models{
 
@@ -269,8 +269,42 @@ namespace HelloWorld
 
             }        
         ```       
-Return:
-    Thing
+
+<br>
+
+*Back to [contents](#contents)*
+
+---
+
+### **Computer SQL Script**
+
+* Create an SQL table to mimic the Computer model
+* SQL code to copy paste into Azure Data Studio to set up the new table
+
+    ```sql
+        CREATE DATABASE DotNetCourseDatabase
+        GO
+        
+        USE DotNetCourseDatabase
+        GO
+        
+        CREATE SCHEMA TutorialAppSchema
+        GO
+        
+        CREATE TABLE TutorialAppSchema.Computer(
+            ComputerId INT IDENTITY(1,1) PRIMARY KEY,
+            Motherboard NVARCHAR(50),
+            CPUCores INT,
+            HasWifi BIT,
+            HasLTE BIT,
+            ReleaseDate DATE,
+            Price DECIMAL(18,4),
+            VideoCard NVARCHAR(50)
+    );
+    ```
+
+* Note: Mac/Linux users see ["30. MacOS and Linux Users"](https://www.udemy.com/course/net-core-with-ms-sql-beginner-to-expert/learn/lecture/35282578#announcements)
+
 
 <br>
 
