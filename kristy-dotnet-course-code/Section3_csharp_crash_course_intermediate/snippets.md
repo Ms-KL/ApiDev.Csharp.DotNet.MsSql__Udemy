@@ -323,15 +323,17 @@ namespace HelloWorld
 * Tells C# where the code lives (to be retrievable)
 * Note: Mac/Linux users see ["30. MacOS and Linux Users"](https://www.udemy.com/course/net-core-with-ms-sql-beginner-to-expert/learn/lecture/35282578#announcements)
 * **Error**: A network-related or instance-specific error occurred... ?<br> See [Windows Connection Troubleshooting](https://www.udemy.com/course/net-core-with-ms-sql-beginner-to-expert/learn/lecture/38144014#announcements)
-```shell
-    stuff
-```
 
-```csharp
-    stuff
-```
-Return:
-    Thing
+    ```shell
+        stuff
+    ```
+
+    ```csharp
+        stuff
+    ```
+    Return:
+    
+        Thing
 
 <br>
 

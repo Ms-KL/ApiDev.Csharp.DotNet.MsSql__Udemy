@@ -37,7 +37,7 @@
 
 1. ✅ Introduction
 2. ✅ C# Crash Course - Basics | [Kristy Code & Notes](/kristy-dotnet-course-code/Section2_csharp_crash_course_basics/)
-3. ⏳ C# Crash Course - Intermediate | Kristy Code & Notes
+3. ⏳ C# Crash Course - Intermediate | [Kristy Code & Notes](/kristy-dotnet-course-code/Section3_csharp_crash_course_intermediate/)
 4. SQL Seed 
 5. SQL 
 6. API - Basics
