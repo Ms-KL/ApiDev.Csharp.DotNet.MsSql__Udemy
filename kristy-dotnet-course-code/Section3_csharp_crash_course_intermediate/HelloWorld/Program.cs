@@ -189,32 +189,74 @@ namespace HelloWorld
     // }
 
 
+//     // --------------------------
+//     // FINAL MODEL using constructor
+//     // --------------------------
+//     public class Computer
+//     {
+//         public string Motherboard { get; set; } // accessible in constructor
+//         public int CPUCores { get; set; }
+//         public bool HasWifi { get; set; }
+//         public bool HasLTE { get; set; }
+//         public DateTime ReleaseDate { get; set; }
+//         public decimal Price { get; set; }
+//         public string VideoCard { get; set; } // accessible in constructor
+
+//         // Constructor
+//         public Computer() // can access Motheboard & VideoCard
+//         {
+//             if (Motherboard == null)
+//             {
+//                 Motherboard = "";
+//             }
+
+//             if (VideoCard == null)
+//             {
+//                 VideoCard = "";
+//             }
+//         }
+//     }
+
+//     internal class Program
+//     {
+//         static void Main(string[] args)
+//         {
+//             // create first instance of Computer model
+//             Computer myComputer = new Computer()
+//             {
+//                 Motherboard = "z39anvd923",
+//                 HasWifi = true,
+//                 HasLTE = false,
+//                 ReleaseDate = DateTime.Now,
+//                 Price = 943.87m,
+//                 VideoCard = "RTX 26"
+//             };
+
+//             Console.WriteLine(myComputer.HasWifi);
+
+//             // change values
+//             myComputer.HasWifi = false;
+
+//             Console.WriteLine(myComputer.Motherboard);
+//             Console.WriteLine(myComputer.HasWifi);
+//             Console.WriteLine(myComputer.VideoCard);
+
+//         }
+//     }
+// }
+
     // --------------------------
-    // FINAL MODEL
+    // FINAL MODEL using default
     // --------------------------
     public class Computer
     {
-        public string Motherboard { get; set; } // accessible in constructor
+        public string Motherboard { get; set; } = "";
         public int CPUCores { get; set; }
         public bool HasWifi { get; set; }
         public bool HasLTE { get; set; }
         public DateTime ReleaseDate { get; set; }
         public decimal Price { get; set; }
-        public string VideoCard { get; set; } // accessible in constructor
-
-        // Constructor
-        public Computer() // can access Motheboard & VideoCard
-        {
-            if (Motherboard == null)
-            {
-                Motherboard = "";
-            }
-
-            if (VideoCard == null)
-            {
-                VideoCard = "";
-            }
-        }
+        public string VideoCard { get; set; } = "";
     }
 
     internal class Program
