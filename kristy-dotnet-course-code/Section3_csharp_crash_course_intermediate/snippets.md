@@ -303,9 +303,6 @@ namespace HelloWorld
     );
     ```
 
-* Note: Mac/Linux users see ["30. MacOS and Linux Users"](https://www.udemy.com/course/net-core-with-ms-sql-beginner-to-expert/learn/lecture/35282578#announcements)
-
-
 <br>
 
 *Back to [contents](#contents)*
@@ -324,7 +321,8 @@ namespace HelloWorld
                 * Affect the table data specifically
         * Use C# to write a SQL query
 * Tells C# where the code lives (to be retrievable)
-
+* Note: Mac/Linux users see ["30. MacOS and Linux Users"](https://www.udemy.com/course/net-core-with-ms-sql-beginner-to-expert/learn/lecture/35282578#announcements)
+* **Error**: A network-related or instance-specific error occurred... ?<br> See [Windows Connection Troubleshooting](https://www.udemy.com/course/net-core-with-ms-sql-beginner-to-expert/learn/lecture/38144014#announcements)
 ```shell
     stuff
 ```
