@@ -428,6 +428,144 @@ _______________________________________________________*/
 // DAPPER PART 1
 // --------------------------
 
+// using System;
+
+// using System.Text.RegularExpressions;
+
+// // import decoupledmodels
+// using HelloWorld.Models;
+
+// // Import for IDb Connection to SQL Database
+// using System.Data;
+// using Microsoft.Data.SqlClient;
+// using Dapper;
+
+// namespace HelloWorld
+// {
+//     // models moved to Models.Computer.cs
+//     public class Program
+//     {
+//         public static void Main(string[] args)
+//         {
+//             // create connection to database 
+//             string connectionString = "Server=localhost;Database=DotNetCourseDatabase;TrustServerCertificate=true;Trusted_Connection=true;";
+
+//             // Create IDB Connection Object to connect to server
+//             IDbConnection dbConnection = new SqlConnection(connectionString);
+
+//             // __________________________________________________________
+//             // // Create command to test connection
+//             // string sqlCommand = "SELECT GETDATE()";
+//             // DateTime rightNow = dbConnection.QuerySingle<DateTime>(sqlCommand); 
+//             // Console.WriteLine(rightNow);
+//             //     // Create sqlCommand to getdate
+//             //     // Get the DateTime right now to set the value
+//             //     // Connect to database
+//             //     // Query a Single Line in the Database using Dapper
+//             //     // Set the DateTime in the database using sqlCommand
+//             //     // Return the Dateto,e value in the database
+//             // __________________________________________________________
+
+//             // Get Time Right now, Connect to Database, Set value, Return
+//             // ALTERNATIVE:
+//             DateTime rightNow = dbConnection.QuerySingle<DateTime>("SELECT GETDATE()");
+//             Console.WriteLine(rightNow.ToString());
+
+//             Console.WriteLine("---------");
+
+//             // --- create first instance of Computer model
+//             // instance = row in database
+//             Computer myComputer = new Computer()
+//             {
+//                 Motherboard = "z39anvd923",
+//                 HasWifi = true,
+//                 HasLTE = false,
+//                 ReleaseDate = DateTime.Now,
+//                 Price = 943.87m,
+//                 VideoCard = "RTX 26"
+//             };
+
+//             // --- SQL statement to pass to Dapper Execute Statement
+//             // Add fields from model and pass in values to add to database
+//             // @ allows multiple line string
+//             string sql = @"INSERT INTO TutorialAppSchema.Computer (
+//                 Motherboard,
+//                 HasWifi,
+//                 HasLTE,
+//                 ReleaseDate,
+//                 Price,
+//                 VideoCard
+//             ) VALUES ('" + myComputer.Motherboard 
+//                 + "','" + myComputer.HasWifi
+//                 + "','" + myComputer.HasLTE
+//                 + "','" + myComputer.ReleaseDate                                
+//                 + "','" + myComputer.Price
+//                 + "','" + myComputer.VideoCard
+//             + "')";
+
+
+//             // Copy/Paste Result into Azure Data Studio
+//             Console.WriteLine(sql);
+
+//             // --- Execute the SQL statement with Dapper
+//             // return the number of the rows affected
+//             // Console print the result
+//             int result = dbConnection.Execute(sql);
+//             Console.WriteLine("Number of rows affected: " + result);
+
+//             // -- New SQL Select Statement
+//             string sqlSelect = @"SELECT
+//                 Computer.Motherboard,
+//                 Computer.HasWifi,
+//                 Computer.HasLTE,
+//                 Computer.ReleaseDate,
+//                 Computer.Price,
+//                 Computer.VideoCard
+//             FROM TutorialAppSchema.Computer";
+
+//             // --- access all elements in model using loop
+//             IEnumerable<Computer> computers = dbConnection.Query<Computer>(sqlSelect);
+
+//             // --- Print Header for Output:
+//             Console.WriteLine("'Motherboard', 'HasWifi', 'HasLTE', 'ReleaseDate', 'Price', 'VideoCard'");
+
+//             // --- loop through data structure and print value
+//             foreach(Computer singleComputer in computers)
+//             {
+//                 Console.WriteLine("'" + myComputer.Motherboard 
+//                 + "','" + myComputer.HasWifi
+//                 + "','" + myComputer.HasLTE
+//                 + "','" + myComputer.ReleaseDate                                
+//                 + "','" + myComputer.Price
+//                 + "','" + myComputer.VideoCard
+//                 + "'");
+//             }
+
+//             // -*-- Copy/Paste Result into Azure Data Studio
+//             Console.WriteLine(sqlSelect);
+
+//             // __________________________________________________________
+//             // Print Model Values
+
+//             // Console.WriteLine(myComputer.HasWifi);
+//             // myComputer.HasWifi = false; // change values
+//             // Console.WriteLine(myComputer.Motherboard);
+//             // Console.WriteLine(myComputer.HasWifi);
+//             // Console.WriteLine(myComputer.VideoCard);
+//             // __________________________________________________________
+
+//         }
+//     }
+// }
+
+// --------------------------
+// DAPPER PART 2 --> DECOUPLE
+// --------------------------
+
+// Decouple Dapper into own file
+// HelloWorld > Data > DataContextDapper.cs
+
+
 using System;
 
 using System.Text.RegularExpressions;
@@ -439,42 +577,24 @@ using HelloWorld.Models;
 using System.Data;
 using Microsoft.Data.SqlClient;
 using Dapper;
+using HelloWorld.Data;
 
 namespace HelloWorld
 {
     // models moved to Models.Computer.cs
-    public class Program
+    internal class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            // create connection to database 
-            string connectionString = "Server=localhost;Database=DotNetCourseDatabase;TrustServerCertificate=true;Trusted_Connection=true;";
+            // connectionString moved to Data.DataContextDapper.cs
 
-            // Create IDB Connection Object to connect to server
-            IDbConnection dbConnection = new SqlConnection(connectionString);
+            // -- New Instance of Dapper
+            DataContextDapper dapper = new DataContextDapper();
 
-            // __________________________________________________________
-            // // Create command to test connection
-            // string sqlCommand = "SELECT GETDATE()";
-            // DateTime rightNow = dbConnection.QuerySingle<DateTime>(sqlCommand); 
-            // Console.WriteLine(rightNow);
-            //     // Create sqlCommand to getdate
-            //     // Get the DateTime right now to set the value
-            //     // Connect to database
-            //     // Query a Single Line in the Database using Dapper
-            //     // Set the DateTime in the database using sqlCommand
-            //     // Return the Dateto,e value in the database
-            // __________________________________________________________
+            // -- Get Time Right now, call dapper method LoadDataSingle, Connect to Database, Set value, Return
+            DateTime rightNow = dapper.LoadDataSingle<DateTime>("SELECT GETDATE()");
 
-            // Get Time Right now, Connect to Database, Set value, Return
-            // ALTERNATIVE:
-            DateTime rightNow = dbConnection.QuerySingle<DateTime>("SELECT GETDATE()");
-            Console.WriteLine(rightNow.ToString());
-
-            Console.WriteLine("---------");
-
-            // --- create first instance of Computer model
-            // instance = row in database
+            // --- New Instance (Row) of Computer Model
             Computer myComputer = new Computer()
             {
                 Motherboard = "z39anvd923",
@@ -485,7 +605,7 @@ namespace HelloWorld
                 VideoCard = "RTX 26"
             };
 
-            // --- SQL statement to pass to Dapper Execute Statement
+            // --- SQL statement to pass to dapper Execute Statement
             // Add fields from model and pass in values to add to database
             // @ allows multiple line string
             string sql = @"INSERT INTO TutorialAppSchema.Computer (
@@ -503,15 +623,10 @@ namespace HelloWorld
                 + "','" + myComputer.VideoCard
             + "')";
 
-
-            // Copy/Paste Result into Azure Data Studio
-            Console.WriteLine(sql);
-
-            // --- Execute the SQL statement with Dapper
-            // return the number of the rows affected
-            // Console print the result
-            int result = dbConnection.Execute(sql);
-            Console.WriteLine("Number of rows affected: " + result);
+            // --- Execute the SQL statement with dapper method ExecuteSql (pass in sql)
+            // return boolean and number of the rows affected
+            bool resultBoolean = dapper.ExecuteSql(sql);
+            int resultRows = dapper.ExecuteSqlWithRowCount(sql);
 
             // -- New SQL Select Statement
             string sqlSelect = @"SELECT
@@ -523,11 +638,13 @@ namespace HelloWorld
                 Computer.VideoCard
             FROM TutorialAppSchema.Computer";
 
-            // --- access all elements in model using loop
-            IEnumerable<Computer> computers = dbConnection.Query<Computer>(sqlSelect);
+            // --- access dapper method LoadData, pass in sqlSelect string, return result of all Computer model using loop
+            IEnumerable<Computer> computers = dapper.LoadData<Computer>(sqlSelect);
 
             // --- Print Header for Output:
+            Console.WriteLine("_______________________________________________________________________");            
             Console.WriteLine("'Motherboard', 'HasWifi', 'HasLTE', 'ReleaseDate', 'Price', 'VideoCard'");
+            Console.WriteLine("_______________________________________________________________________");            
 
             // --- loop through data structure and print value
             foreach(Computer singleComputer in computers)
@@ -542,7 +659,13 @@ namespace HelloWorld
             }
 
             // -*-- Copy/Paste Result into Azure Data Studio
+            Console.WriteLine("________________________________________________________");
+            Console.WriteLine("SQL to copy/paste into Azure Data Studio Query");
+            Console.WriteLine("________________________________________________________");       
+            Console.WriteLine(sql);
+            Console.WriteLine("________________________________________________________");       
             Console.WriteLine(sqlSelect);
+            Console.WriteLine("________________________________________________________");   
 
             // __________________________________________________________
             // Print Model Values
@@ -557,3 +680,4 @@ namespace HelloWorld
         }
     }
 }
+

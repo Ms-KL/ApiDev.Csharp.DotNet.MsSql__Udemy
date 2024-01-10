@@ -19,6 +19,21 @@ Kristy's [HelloWorld Program.cs](./HelloWorld/Program.cs) file
 
 ---
 
+### **VSCode Shortcuts:**
+
+| Item | Command | Notes | 
+|-|-|-|
+| Bring Up "Fix" Context menu to action squiggly lines | select code +  `ctrl` + `.` | Can fill in missing import / using statement |
+| Move line up and down | cursor on line + `alt` + `arrow` | moves code line |
+
+
+
+<br>
+
+[Skip to End](#end)
+
+---
+
 ### **Setup Environment**
 
 ```shell
