@@ -424,6 +424,10 @@ _______________________________________________________*/
     Dapper
 _______________________________________________________*/
 
+// --------------------------
+// DAPPER PART 1
+// --------------------------
+
 using System;
 
 using System.Text.RegularExpressions;
@@ -462,13 +466,15 @@ namespace HelloWorld
             //     // Return the Dateto,e value in the database
             // __________________________________________________________
 
+            // Get Time Right now, Connect to Database, Set value, Return
             // ALTERNATIVE:
             DateTime rightNow = dbConnection.QuerySingle<DateTime>("SELECT GETDATE()");
             Console.WriteLine(rightNow.ToString());
 
             Console.WriteLine("---------");
 
-            // create first instance of Computer model
+            // --- create first instance of Computer model
+            // instance = row in database
             Computer myComputer = new Computer()
             {
                 Motherboard = "z39anvd923",
@@ -479,14 +485,74 @@ namespace HelloWorld
                 VideoCard = "RTX 26"
             };
 
-            Console.WriteLine(myComputer.HasWifi);
+            // --- SQL statement to pass to Dapper Execute Statement
+            // Add fields from model and pass in values to add to database
+            // @ allows multiple line string
+            string sql = @"INSERT INTO TutorialAppSchema.Computer (
+                Motherboard,
+                HasWifi,
+                HasLTE,
+                ReleaseDate,
+                Price,
+                VideoCard
+            ) VALUES ('" + myComputer.Motherboard 
+                + "','" + myComputer.HasWifi
+                + "','" + myComputer.HasLTE
+                + "','" + myComputer.ReleaseDate                                
+                + "','" + myComputer.Price
+                + "','" + myComputer.VideoCard
+            + "')";
 
-            // change values
-            myComputer.HasWifi = false;
 
-            Console.WriteLine(myComputer.Motherboard);
-            Console.WriteLine(myComputer.HasWifi);
-            Console.WriteLine(myComputer.VideoCard);
+            // Copy/Paste Result into Azure Data Studio
+            Console.WriteLine(sql);
+
+            // --- Execute the SQL statement with Dapper
+            // return the number of the rows affected
+            // Console print the result
+            int result = dbConnection.Execute(sql);
+            Console.WriteLine("Number of rows affected: " + result);
+
+            // -- New SQL Select Statement
+            string sqlSelect = @"SELECT
+                Computer.Motherboard,
+                Computer.HasWifi,
+                Computer.HasLTE,
+                Computer.ReleaseDate,
+                Computer.Price,
+                Computer.VideoCard
+            FROM TutorialAppSchema.Computer";
+
+            // --- access all elements in model using loop
+            IEnumerable<Computer> computers = dbConnection.Query<Computer>(sqlSelect);
+
+            // --- Print Header for Output:
+            Console.WriteLine("'Motherboard', 'HasWifi', 'HasLTE', 'ReleaseDate', 'Price', 'VideoCard'");
+
+            // --- loop through data structure and print value
+            foreach(Computer singleComputer in computers)
+            {
+                Console.WriteLine("'" + myComputer.Motherboard 
+                + "','" + myComputer.HasWifi
+                + "','" + myComputer.HasLTE
+                + "','" + myComputer.ReleaseDate                                
+                + "','" + myComputer.Price
+                + "','" + myComputer.VideoCard
+                + "'");
+            }
+
+            // -*-- Copy/Paste Result into Azure Data Studio
+            Console.WriteLine(sqlSelect);
+
+            // __________________________________________________________
+            // Print Model Values
+
+            // Console.WriteLine(myComputer.HasWifi);
+            // myComputer.HasWifi = false; // change values
+            // Console.WriteLine(myComputer.Motherboard);
+            // Console.WriteLine(myComputer.HasWifi);
+            // Console.WriteLine(myComputer.VideoCard);
+            // __________________________________________________________
 
         }
     }
