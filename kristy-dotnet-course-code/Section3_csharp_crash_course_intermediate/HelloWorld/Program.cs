@@ -339,6 +339,91 @@ _______________________________________________________*/
     Create Connections
 _______________________________________________________*/
 
+// using System;
+
+// using System.Text.RegularExpressions;
+
+// // import decoupledmodels
+// using HelloWorld.Models;
+
+// // Import for IDb Connection to SQL Database
+// using System.Data;
+// using Microsoft.Data.SqlClient;
+// using Dapper;
+
+// namespace HelloWorld
+// {
+//     // models moved to Models.Computer.cs
+//     public class Program
+//     {
+//         public static void Main(string[] args)
+//         {
+//             // create connection to database 
+
+//             // Mac/Linux:
+//             // string connectionString = "Server=localhost;Database=DotNetCourseDatabase;TrustServerCertificate=true;Trusted_Connection=false;User Id=sa;Password=SQLConnect1;";
+            
+//             // Windows
+//             string connectionString = "Server=localhost;Database=DotNetCourseDatabase;TrustServerCertificate=true;Trusted_Connection=true;";
+
+//             // Create IDB Connection Object to connect to server
+//             IDbConnection dbConnection = new SqlConnection(connectionString);
+
+//             // Create command to test connection
+//             string sqlCommand = "SELECT GETDATE()";
+
+//             // ---------  
+//             // Test Connection using Connection object, Dapper Query and sqlCommand
+//             // dbConnection.Query<DateTime>(sqlCommand);
+//                 // connects to dbConnection and query database using Dapper
+//                 // Returns a DateTime value using sqlCommand
+
+//             // ALT: Single line query:
+//             // dbConnection.QuerySingle<DateTime>(sqlCommand);
+//             // ---------             
+
+//             // TEST the Connection
+//             DateTime rightNow = dbConnection.QuerySingle<DateTime>(sqlCommand);
+//                 // Get the DateTime right now to set the value
+//                 // Connect to database
+//                 // Query Database using Dapper
+//                 // Set the DateTime in the database
+//                 // Return the value in the database
+
+//             // TEST it worked 
+//             Console.WriteLine(rightNow);
+
+//             Console.WriteLine("---------");
+
+//             // create first instance of Computer model
+//             Computer myComputer = new Computer()
+//             {
+//                 Motherboard = "z39anvd923",
+//                 HasWifi = true,
+//                 HasLTE = false,
+//                 ReleaseDate = DateTime.Now,
+//                 Price = 943.87m,
+//                 VideoCard = "RTX 26"
+//             };
+
+//             Console.WriteLine(myComputer.HasWifi);
+
+//             // change values
+//             myComputer.HasWifi = false;
+
+//             Console.WriteLine(myComputer.Motherboard);
+//             Console.WriteLine(myComputer.HasWifi);
+//             Console.WriteLine(myComputer.VideoCard);
+
+//         }
+//     }
+// }
+
+/* _____________________________________________________
+
+    Dapper
+_______________________________________________________*/
+
 using System;
 
 using System.Text.RegularExpressions;
@@ -359,39 +444,27 @@ namespace HelloWorld
         public static void Main(string[] args)
         {
             // create connection to database 
-
-            // Mac/Linux:
-            // string connectionString = "Server=localhost;Database=DotNetCourseDatabase;TrustServerCertificate=true;Trusted_Connection=false;User Id=sa;Password=SQLConnect1;";
-            
-            // Windows
             string connectionString = "Server=localhost;Database=DotNetCourseDatabase;TrustServerCertificate=true;Trusted_Connection=true;";
 
             // Create IDB Connection Object to connect to server
             IDbConnection dbConnection = new SqlConnection(connectionString);
 
-            // Create command to test connection
-            string sqlCommand = "SELECT GETDATE()";
+            // __________________________________________________________
+            // // Create command to test connection
+            // string sqlCommand = "SELECT GETDATE()";
+            // DateTime rightNow = dbConnection.QuerySingle<DateTime>(sqlCommand); 
+            // Console.WriteLine(rightNow);
+            //     // Create sqlCommand to getdate
+            //     // Get the DateTime right now to set the value
+            //     // Connect to database
+            //     // Query a Single Line in the Database using Dapper
+            //     // Set the DateTime in the database using sqlCommand
+            //     // Return the Dateto,e value in the database
+            // __________________________________________________________
 
-            // ---------  
-            // Test Connection using Connection object, Dapper Query and sqlCommand
-            // dbConnection.Query<DateTime>(sqlCommand);
-                // connects to dbConnection and query database using Dapper
-                // Returns a DateTime value using sqlCommand
-
-            // ALT: Single line query:
-            // dbConnection.QuerySingle<DateTime>(sqlCommand);
-            // ---------             
-
-            // TEST the Connection
-            DateTime rightNow = dbConnection.QuerySingle<DateTime>(sqlCommand);
-                // Get the DateTime right now to set the value
-                // Connect to database
-                // Query Database using Dapper
-                // Set the DateTime in the database
-                // Return the value in the database
-
-            // TEST it worked 
-            Console.WriteLine(rightNow);
+            // ALTERNATIVE:
+            DateTime rightNow = dbConnection.QuerySingle<DateTime>("SELECT GETDATE()");
+            Console.WriteLine(rightNow.ToString());
 
             Console.WriteLine("---------");
 
